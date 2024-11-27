@@ -1,0 +1,57 @@
+<div class="flashcards">
+
+  <div class="wrap-flashcards">
+
+    <div class="tp-wrapper">
+      <div class="tp-box" (click)="toggleFlip()" [@flipState]="flip">
+        <div class="tp-box__side tp-box__front">
+
+          <h1 class="card-front-question">
+            {{questoes.enunciado}}
+
+          </h1>
+
+          <p class="card-front-text">
+            @for (alternativa of questoes.alternativas; track $index) {
+            <span> {{ getLetter($index) }}) </span > {{alternativa.texto}}<br>
+            }
+          </p>
+
+
+        </div>
+        <div class="tp-box__side tp-box__back">
+
+          <h1 class="card-front-question">
+
+            Resposta correta: {{questoes?.alternativaCorreta?.texto}}
+          </h1>
+
+          <p class="card-front-text">
+            Justificativa: {{questoes.justificativa}}
+          </p>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="container-buttons">
+    <button (click)="avaliarERenderizarNovaQuestao(1)" style="background-color: #A0C76E;" class="button-flashcards">
+      Muito fácil<br> (Reaparece após 1 dia)
+    </button>
+    <button (click)="avaliarERenderizarNovaQuestao(2)" style="background-color: #108A92;" class="button-flashcards">
+      Fácil<br>(Reaparece após 90 min)
+    </button>
+    <button (click)="avaliarERenderizarNovaQuestao(3)" style="background-color: #E3E651;" class="button-flashcards">
+      Médio<br>(Reaparece após 60 min)
+    </button>
+    <button (click)="avaliarERenderizarNovaQuestao(4)" style="background-color: #BB936E;" class="button-flashcards">
+      Difícil<br>(Reaparece após 30 min)
+    </button>
+    <button (click)="avaliarERenderizarNovaQuestao(5)" style="background-color: #F95D5D;" class="button-flashcards">
+      Muito difícil<br>(Reaparece após 15 min)
+    </button>
+  </div>
+
+</div>

@@ -1,130 +1,151 @@
-.flashcards{
-    background-color: #DFEAE9;
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  .flashcards{
+      background-color: #DFEAE9;
+      width: 100%;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      }
+
+  .wrap-flashcards{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      max-height: 700px; /* Limita a altura máxima para telas menores */
+      width: 85vw;
+      height: 60vh;
+      border-radius: 30px;
+      background-color: white;
+      box-sizing: border-box;
+      overflow-wrap: break-word;
+
+  }
+
+  .button-flashcards {
+
+      width: 13rem;
+      height: 4.5rem;
+      border-radius: 60px;
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 0.95rem;
+      line-height: 1rem;
+      text-align: center;
+      color: #FFFFFF;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin: 1.5rem;
+    
+    }
+    
+    .container-buttons{
+      display: flex;
+      flex-wrap: wrap; /* Permite que os botões quebrem para a próxima linha */
+      justify-content: center;
+    
     }
 
-.wrap-flashcards{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    max-height: 700px; /* Limita a altura máxima para telas menores */
-    width: 85vw;
-    height: 90vh;
-    border-radius: 30px;
-    background-color: white;
-    box-sizing: border-box;
-    overflow-wrap: break-word;
-}
 
-.button-flashcards {
 
-    width: 13rem;
-    height: 4.5rem;
-    border-radius: 60px;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 0.95rem;
-    line-height: 1rem;
-    text-align: center;
-    color: #FFFFFF;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin: 1.5rem;
+    
+
+    .tp-wrapper {
+      -webkit-perspective: 800px;
+              perspective: 800px;
+
+    }
+    
+    .tp-box {
+      position: relative;
+      width: 65vw;
+      height: 55vh;
   
-  }
+      margin: 3rem auto;
+      -webkit-transform-style: preserve-3d;
+              transform-style: preserve-3d;
+      -webkit-transform         : transform 1s;
+          -ms-transform         : transform 1s;
+              transform         : transform 1s;
+
+    }
+    .tp-box__side {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      overflow-y: auto; /* Adiciona scroll automático no eixo vertical */
+      overflow-x: hidden; /* Garante que não haja scroll horizontal */
+      scrollbar-width: thin; /* Opcional: define largura do scroll em navegadores compatíveis */
+
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      cursor: pointer;
+      -webkit-user-select: none;
+        -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+
+    }
+    .tp-box__front {
+      background: rgba(73, 187, 189, 0.3);
+      border-radius: 20px;
+
+      overflow-y: auto; /* Adiciona scroll automático no eixo vertical */
+      overflow-x: hidden; /* Garante que não haja scroll horizontal */
+      scrollbar-width: thin; /* Opcional: define largura do scroll em navegadores compatíveis */
+
   
-  .container-buttons{
-    display: flex;
-    flex-wrap: wrap; /* Permite que os botões quebrem para a próxima linha */
-    justify-content: center;
-  
-  }
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      -webkit-transform : rotateY(0deg);
+      -ms-transform     : rotateY(0deg);
+      transform         : rotateY(0deg);
+    }
+    .tp-box__back {
+      background: rgba(73, 187, 189, 0.3);
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      overflow-y: auto;
+      -webkit-transform : rotateY(-180deg);
+      -ms-transform     : rotateY(-180deg);
+      transform         : rotateY(-180deg);
+    }
 
 
-
-  
-
-  .tp-wrapper {
-    -webkit-perspective: 800px;
-            perspective: 800px;
-  }
-  
-  .tp-box {
-    position: relative;
-    width: 65vw;
-    height: 55vh;
- 
-    margin: 3rem auto;
-    -webkit-transform-style: preserve-3d;
-            transform-style: preserve-3d;
-    -webkit-transform         : transform 1s;
-        -ms-transform         : transform 1s;
-            transform         : transform 1s;
-  }
-  .tp-box__side {
-     width: 100%;
-    height: 100%;
-    position: absolute;
-
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    cursor: pointer;
-    -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
-  }
-  .tp-box__front {
-    background: rgba(73, 187, 189, 0.3);
-    border-radius: 20px;
-    overflow: hidden;
-    overflow-y: auto;
-    -webkit-transform : rotateY(0deg);
-    -ms-transform     : rotateY(0deg);
-    transform         : rotateY(0deg);
-  }
-  .tp-box__back {
-    background: rgba(73, 187, 189, 0.3);
-    border-radius: 20px;
-    overflow: hidden;
-     overflow-y: auto;
-    -webkit-transform : rotateY(-180deg);
-    -ms-transform     : rotateY(-180deg);
-    transform         : rotateY(-180deg);
-  }
+    .card-front-question{
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 1.5rem;
+      line-height: 180%;
+      text-align: center;
+      color: #252641;
+      padding-top: 1rem;
 
 
-  .card-front-question{
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 1.5rem;
-    line-height: 180%;
-    text-align: center;
-    color: #252641;
-    padding-top: 1rem;
+    }
+
+  .card-front-text{
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: 275;
+      font-size: 1.5rem;
+      line-height: 180%;
+      text-align: center;
+      color: #252641;
+      padding-top: 1rem;
 
   }
-
-.card-front-text{
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: 275;
-    font-size: 1.5rem;
-    line-height: 180%;
-    text-align: center;
-    color: #252641;
-    padding-top: 1rem;
-}
-  
+    
 

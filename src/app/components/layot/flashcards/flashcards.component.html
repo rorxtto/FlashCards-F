@@ -11,29 +11,38 @@
 
           </h1>
 
+        
           <p class="card-front-text">
             @for (alternativa of questoes.alternativas; track $index) {
+              @if (alternativa.texto != null) {
             <span> {{ getLetter($index) }}) </span > {{alternativa.texto}}<br>
             }
+          }
           </p>
-
+          
+         
 
         </div>
         <div class="tp-box__side tp-box__back">
 
+          @if (questoes?.alternativaCorreta?.texto != null) {
           <h1 class="card-front-question">
 
             Resposta correta: {{questoes?.alternativaCorreta?.texto}}
           </h1>
+        }
+        <p class="card-front-text">
+          Justificativa: {{questoes.justificativa}}
+        </p>
+        
 
-          <p class="card-front-text">
-            Justificativa: {{questoes.justificativa}}
-          </p>
+         
 
         </div>
       </div>
     </div>
 
+    
   </div>
 
   <div class="container-buttons">
@@ -55,3 +64,5 @@
   </div>
 
 </div>
+
+

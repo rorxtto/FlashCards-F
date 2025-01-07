@@ -12,6 +12,7 @@ import { QuestoesService } from '../../../services/questoes.service';
 import { Submateria } from '../../../models/submateria';
 import { Materia } from '../../../models/materia';
 import { Respostas } from '../../../models/respostas';
+import { Alternativas } from '../../../models/alternativas';
 
 @Component({
   selector: 'app-flashcards',
@@ -56,12 +57,12 @@ export class FlashcardsComponent implements OnInit {
       .findNextQuestionBySubmateria(id, idQuestaoEmTela)
       .subscribe({
         next: (questao) => {
-          console.log(questao);
+
           this.questoes = questao;
           this.embaralharAlternativas(); // Embaralha as alternativas ao carregar a questão
         },
         error: (erro) => {
-          alert('Deu pau');
+          alert('Ocorreu um erro!');
         },
       });
   }
@@ -94,7 +95,7 @@ export class FlashcardsComponent implements OnInit {
         this.questoes = questao;
       },
       error: (erro) => {
-        alert('Deu pau');
+        alert('Ocorreu um erro!');
       },
     });
   }
@@ -105,7 +106,6 @@ export class FlashcardsComponent implements OnInit {
     let aux = this.questoesService.getRespostas();
     let agora = this.getBrasiliaTime();
 
-    console.log(agora);
 
     if (aux) {
       respostas = aux;
@@ -130,7 +130,6 @@ export class FlashcardsComponent implements OnInit {
 
     //ETAPA 2 - RENDERIZAR PRÓXIMA QUESTÃO
 
-    console.log(agora);
 
     let muitoFacilMinutos = 1;
     let facilMinutos = 2;
@@ -138,32 +137,15 @@ export class FlashcardsComponent implements OnInit {
     let dificilMinutos = 4;
     let muitoDificilMinutos = 5;
 
-    console.log(this.subtrairDatas(agora, respostas.dataHoraUltimaMuitoFacil, 'ms'));
 
-    if (
-      this.subtrairDatas(agora, respostas.dataHoraUltimaMuitoDificil, 'ms') >
-        muitoDificilMinutos * 1000 * 60 &&
-      respostas.questoesMuitoDificeis.length > 0
+    if ( 
+      this.subtrairDatas(agora, respostas.dataHoraUltimaMuitoFacil, 'ms') >
+        muitoFacilMinutos * 1000 * 60 &&
+      respostas.questoesMuitoFaceis.length > 0
     ) {
-      let id = respostas.questoesMuitoDificeis[0];
+      let id = respostas.questoesMuitoFaceis[0];
       this.findById(id);
-      respostas.questoesMuitoDificeis.splice(0, 1);
-    } else if (
-      this.subtrairDatas(agora, respostas.dataHoraUltimaDificil, 'ms') >
-        dificilMinutos * 1000 * 60 &&
-      respostas.questoesDificeis.length > 0
-    ) {
-      let id = respostas.questoesDificeis[0];
-      this.findById(id);
-      respostas.questoesDificeis.splice(0, 1);
-    } else if (
-      this.subtrairDatas(agora, respostas.dataHoraUltimaMedia, 'ms') >
-        mediaMinutos * 1000 * 60 &&
-      respostas.questoesMedias.length > 0
-    ) {
-      let id = respostas.questoesMedias[0];
-      this.findById(id);
-      respostas.questoesMedias.splice(0, 1);
+      respostas.questoesMuitoFaceis.splice(0, 1);
     } else if (
       this.subtrairDatas(agora, respostas.dataHoraUltimaFacil, 'ms') >
         facilMinutos * 1000 * 60 &&
@@ -173,13 +155,29 @@ export class FlashcardsComponent implements OnInit {
       this.findById(id);
       respostas.questoesFaceis.splice(0, 1);
     } else if (
-      this.subtrairDatas(agora, respostas.dataHoraUltimaMuitoFacil, 'ms') >
-        muitoFacilMinutos * 1000 * 60 &&
-      respostas.questoesMuitoFaceis.length > 0
+      this.subtrairDatas(agora, respostas.dataHoraUltimaMedia, 'ms') >
+        mediaMinutos * 1000 * 60 &&
+      respostas.questoesMedias.length > 0
     ) {
-      let id = respostas.questoesMuitoFaceis[0];
+      let id = respostas.questoesMedias[0];
       this.findById(id);
-      respostas.questoesMuitoFaceis.splice(0, 1);
+      respostas.questoesMedias.splice(0, 1);
+    } else if (
+      this.subtrairDatas(agora, respostas.dataHoraUltimaDificil, 'ms') >
+        dificilMinutos * 1000 * 60 &&
+      respostas.questoesDificeis.length > 0
+    ) {
+      let id = respostas.questoesDificeis[0];
+      this.findById(id);
+      respostas.questoesDificeis.splice(0, 1);
+    } else if (
+      this.subtrairDatas(agora, respostas.dataHoraUltimaMuitoDificil, 'ms') >
+        muitoDificilMinutos * 1000 * 60 &&
+      respostas.questoesMuitoDificeis.length > 0
+    ) {
+      let id = respostas.questoesMuitoDificeis[0];
+      this.findById(id);
+      respostas.questoesMuitoDificeis.splice(0, 1);
     } else {
       //aleatorio da submateria
       this.carregarQuestao(this.idSubmateria, this.questoes.id);
@@ -262,3 +260,5 @@ export class FlashcardsComponent implements OnInit {
     }
   }
 }
+
+

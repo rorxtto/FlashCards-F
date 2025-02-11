@@ -1,0 +1,252 @@
+.container-login{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+
+.fundo {
+    width: 50%;
+    height: 100vh;
+    background: linear-gradient(180deg, #334E70 0%, #AAAAAA 61.1%, rgba(223, 224, 226, 0.266667) 100%, rgba(0, 120, 41, 0.266667) 100.01%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* ou auto, ou scroll */
+ 
+}
+
+.principal {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    max-width: 600px;
+    padding: 20px;
+}
+
+.titulo {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 65px;
+    line-height: 60px;
+    color: #FFFFFF;
+    width: 100%;
+    text-align: left;
+    margin: 0;
+    max-width: 600px;
+}
+
+.texto {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    color: #FFFFFF;
+    width: 100%;
+    text-align: left;
+    margin: 0;
+    max-width: 600px;
+}
+
+.button-assin{
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 8px 30px;
+gap: 10px;
+width: 9rem;
+height: 3rem;
+background: #334E70;
+border-radius: 30px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 15px;
+line-height: 21px;
+color: #FFFFFF;
+border: none;
+margin-top: 30px;
+text-decoration: none;
+}
+
+.formLogin {
+    position: absolute;
+    width: 50%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    overflow: hidden;
+    right: 0;
+
+}
+
+.title {
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2.5vw;
+    line-height: 24px;
+
+    color: #000000;
+
+
+}
+
+.highlight {
+
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 4vw;
+    line-height: 54px;
+
+    color: #04595C;
+
+
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-control {
+    box-sizing: border-box;
+    width: 600px;
+    height: 54px;
+    background: #FFFFFF;
+    border: 1px solid #04595C;
+    border-radius: 40px;
+
+}
+
+.question {
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 18px;
+    align-self: flex-start;
+
+
+    color: #000000;
+
+
+}
+
+.link {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 18px;
+    /* identical to box height */
+    align-self: flex-start;
+    text-decoration: none;
+    color: #04595C;
+}
+
+.btn-aceesar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 30px;
+    gap: 10px;
+    width: 11rem;
+    height: 49px;
+    background: #334E70;
+    border-radius: 30px;
+    border: none;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #FFFFFF;
+    flex: 0 0 auto;
+    order: 0;
+    text-decoration: none;
+}
+
+
+
+@media screen and (max-width: 1215px) {
+
+
+    .title {
+        font-size: 3vw;
+    }
+
+    .highlight {
+        font-size: 4.5vw;
+    }
+
+    .form-control {
+      width: 45vw;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container-title {
+        position: relative;
+        top: auto;
+    }
+
+    .formLogin{
+        width: 100%;
+        position: static;
+
+    }
+
+    .title {
+        font-size: 6.5vw;
+    }
+
+    .highlight {
+        font-size: 9vw;
+    }
+
+    .form-control {
+        width: 90vw;
+    }
+
+    .fundo{
+        width: 100%;
+    }
+
+    .principal{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .texto,
+    .titulo{
+        text-align: center;
+    }
+
+
+}
+
+@media screen and (max-width: 550px) {
+    .form-control{
+        width: 90vw;
+    }
+}

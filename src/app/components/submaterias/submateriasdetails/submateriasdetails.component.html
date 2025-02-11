@@ -1,0 +1,68 @@
+<br>
+<div class="container">
+    <div class="row">
+         
+          <div class="col-lg-12"> 
+            <div class="card">
+                
+                <div style="text-align: center;" class="card-body">
+                    <h1> Cadastrar de SubMatérias: </h1>
+
+                    <form #formulario="ngForm">
+                  
+                      <mdb-form-control class="mb-4">
+                        <input mdbInput type="text" name="materia" required class="form-control" [(ngModel)]="submateria.nome" />
+                        <label mdbLabel class="form-label" for="materia">SubMatéria</label>
+                      </mdb-form-control>
+
+                    
+                      <div>
+                        @if (submateria.materia === null) {
+                          <button mdbRipple type="button" class="btn btn-primary btn-block" (click)="buscarMateria()">Buscar Materia</button>
+                        } @else {
+                          <span class="text-primary"> Materia: {{submateria.materia.nome}} </span>
+                          <button mdbRipple type="button" class="btn btn-primary btn-block" (click)="buscarMateria()">Trocar Materia</button>
+                        }
+
+                      </div>
+                    
+                      <br>
+                      <button [disabled]="!formulario.valid || submateria.materia.id <= 0 || submateria.materia.id == undefined" mdbRipple type="button" class="btn btn-primary btn-block" (click)="save()">Salvar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>    
+
+
+
+<ng-template #modalMaterias>
+  <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Cadastro SubMatérias</h5>
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        (click)="modalRef.close()"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <app-materiaslist [esconderBotoes]="true" (retorno)="retornoMateria($event)"></app-materiaslist>
+    </div>
+   
+  </ng-template>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+

@@ -1,0 +1,87 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+
+        <div style="text-align: center;" class="card-body">
+          <h1> Cadastrar de Questoes: </h1>
+
+          <form #formulario="ngForm">
+
+            <mdb-form-control class="mb-4">
+              <textarea mdbInput required type="text" name="enunciado" class="form-control" [(ngModel)]="questoes.enunciado"
+                rows="3"></textarea>
+              <label mdbLabel class="form-label" for="questoes">Enunciado</label>
+            </mdb-form-control>
+
+            <div class="alternativas" style="display: flex; flex-direction: column;">
+
+              @for (alternativa of questoes.alternativas; track $index) {
+              <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                <span>{{getLetter($index)}})</span>
+                <mdb-form-control
+                  style="flex: 1; display: flex; align-items: center; margin-left: 8px; margin-right: 8px;">
+                  <input [(ngModel)]="alternativa.texto" mdbInput type="text" name="alternativas{{$index}}" class="form-control" />
+                  <label mdbLabel class="form-label" for="questoes">Alternativa</label>
+                </mdb-form-control>
+
+           
+                
+
+                <input [checked]="alternativa.correta" 
+                  (click)="marcarCorreta(alternativa)" class="form-check-input" type="radio" name="flexRadioDefault" >
+
+<!--
+                  <input [checked]="alternativa.id == questoes.alternativaCorreta?.id && alternativa.id != 0 && alternativa.id != undefined"
+                  (click)="marcarCorreta(alternativa)" class="form-check-input" type="radio" name="flexRadioDefault" >
+              -->
+
+              </div>
+              }
+
+            </div>
+
+
+            <mdb-form-control class="mb-4">
+              <textarea required mdbInput name="justificativa" class="form-control" [(ngModel)]="questoes.justificativa"
+                rows="3"></textarea>
+              <label mdbLabel class="form-label" for="questoes">Justificativa</label>
+            </mdb-form-control>
+
+
+
+
+            <div>
+              @if(questoes.submateria == null){
+              <button mdbRipple type="button" class="btn btn-primary btn-block" (click)="buscarSub()">Buscar
+                Submateria</button>}
+              @else {
+              <span class="text-primary">Submateria: {{questoes.submateria.nome}} </span>
+              <button mdbRipple type="button" class="btn btn-primary btn-block" (click)="buscarSub()">Trocar
+                Submateria</button>}
+            </div>
+            <br>
+
+            <button [disabled]="!formulario.valid || questoes.submateria.id == undefined" mdbRipple type="button" class="btn btn-primary btn-block" (click)="save()">Salvar</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #modalSubmaterias>
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Cadastro Questoes</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
+  </div>
+  <div class="modal-body">
+    <app-submateriaslist [esconderBotoes]="true" (retorno)="retornoSubmateria($event)"></app-submateriaslist>
+  </div>
+
+</ng-template>
+
+

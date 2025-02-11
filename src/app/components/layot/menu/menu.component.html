@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" style="margin-top: 0.5rem; margin-left: 3rem;">
+        <img
+          src="icons/medcards.png"
+          alt="Logo FlashCards"
+          style="height: 100px;"
+        />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div style=" margin-top: 0.5rem; margin-right: 3rem;" class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="admin/materiasRenderizadas">Matérias</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="admin/configuracoes">Configurações</a>
+          </li>
+          @if (loginService.hasPermission("ADMIN")) {
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="admin/materias">Admin</a>
+          </li>
+        }
+        </ul>
+      </div>
+    </div>
+  </nav>
+

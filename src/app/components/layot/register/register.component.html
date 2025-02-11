@@ -1,0 +1,57 @@
+
+
+
+
+<div class="container-login">
+  
+    <article class="formLogin">
+      <header>
+          <h1 class="title">Cadastre-se no <span class="highlight">MEDCARDS</span></h1>
+      </header>
+  
+      <aside>
+  
+          <form class="form"> 
+              <div class="mb-3">
+                  <label style="font-family: 'Poppins'; font-style: normal; font-weight: 400; font-size: 16px; line-height: 24px; color: #000000;" class="form-label"> Email (obs: deve ser o mesmo email de pagamento na hotmart) </label>
+                  <input type="email"placeholder="Insira seu e-mail"class="form-control" [(ngModel)]="user.username" name="username" />
+              </div>
+  
+              <div class="mb-3">
+                  <label style="font-family: 'Poppins'; font-style: normal; font-weight: 400; font-size: 16px; line-height: 24px; color: #000000;" class="form-label" >Senha </label>
+                  <input placeholder="Insira sua senha" type="password" class="form-control" [(ngModel)]="user.password" name="password"/>
+              </div>
+
+              <div  class="mb-3 form-check">
+                <p class="question"> Já tem uma conta? <a class="link"  href="/login">Login</a> </p>
+            
+
+            </div>
+
+          
+             
+  
+              <button class="btn-aceesar" (click)="registerUser()">Cadastrar</button>
+  
+          </form>
+      </aside>
+  </article>
+
+  
+  <div class="fundo">
+      <div class="principal">
+        <h1 class="titulo">MEDCARDS <img
+            src="icons/logo.png"
+            alt="Logo FlashCards"
+            style="height: 130px;"
+          /></h1>
+        <p class="texto"> Desbloqueie o conhecimento com nossos flashcards inteligentes.</p>
+        <a href="/landingpage" class="button-assin">Assine Já</a>
+        
+      </div>
+    </div>
+
+</div>
+
+
+

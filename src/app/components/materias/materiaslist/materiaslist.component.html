@@ -1,0 +1,79 @@
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                
+                <div class="card-body">
+                    <h1 style="text-align: center;"> Listagem de Materias </h1>
+                    @if (esconderBotoes){}
+                    @else {
+                    <button type="button" class="btn btn-primary btn-rounded mb-2" mdbRipple (click)="new()" routerLinkActive="router-link-active" >Novo +</button>
+                    <button  type="button" class="btn btn-success btn-rounded mb-2 ms-2 float-end " mdbRipple (click)="questoesList()" routerLinkActive="router-link-active" >Questões</button>
+                    <button  type="button" class="btn btn-success btn-rounded mb-2 ms-2 float-end  " mdbRipple (click)="submateriasList()" routerLinkActive="router-link-active" >SubMatérias</button>
+                   
+
+                }
+
+                   
+                    <table border=1 class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nome</th>
+                                <th>Descrição</th>
+                                <th>Imagem</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @for (materia of lista; track $index) {
+                            <tr>
+                                <td> {{materia.id}} </td>
+                                <td> {{materia.nome}} </td>
+                                <td> {{materia.descricao}} </td>
+                                <td> <img src={{materia.base64}} alt="Bioquímica" style="width: 90px; height: 90px;" > </td>
+                                @if (esconderBotoes) {
+                                    <td> <button type="button" class="btn btn-primary btn-rounded" mdbRipple (click)="select(materia)" routerLinkActive="router-link-active" >Selecionar</button> </td>
+                                } @else {
+
+                                    
+                                    <!-- <td> <button  type="button" class="btn btn-success btn-rounded mb-2 ms-2 " mdbRipple (click)="submateriasList(materia.id)" routerLinkActive="router-link-active" >Submatérias -></button><td> -->
+
+                                        <td> <button type="button" class="btn btn-primary btn-rounded" mdbRipple (click)="edit(materia)" routerLinkActive="router-link-active" >Editar</button> </td>
+                                        <td> <button type="button" class="btn btn-danger btn-rounded" mdbRipple (click)="deleteById(materia)">Deletar</button> </td>
+                                }
+                                
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<ng-template #modalMateriaDetalhe>
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Cadastro Matérias</h5>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modalRef.close()"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <app-materiasdetails [materia]="materiaEdit" (retorno)="retornoDetalhe($event)"></app-materiasdetails>
+  </div>
+ 
+</ng-template>
+
+
+

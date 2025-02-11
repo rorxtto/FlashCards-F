@@ -1,0 +1,150 @@
+
+
+.configuracoes{
+    width: 100%;
+}
+
+.wrap-config{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #DFEAE9;
+}
+
+.nav-link{
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 33px;
+    letter-spacing: 0.02em;
+    color: #5B5B5B;
+    margin: 0px;
+
+}
+
+.change-password{
+    background-color: #252641;
+    width: 75%;
+    height: 20%;
+    border-radius: 37px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 10rem;
+
+}
+
+.title-config{
+
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 2rem;
+line-height: 54px;
+/* identical to box height */
+text-align: center;
+color: #FFFFFF;
+margin: 1rem;
+
+}
+
+.text-config{
+
+
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 1rem;
+line-height: 180%;
+/* or 43px */
+text-align: center;
+letter-spacing: 0.02em;
+
+color: #FFFFFF;
+margin: 1rem;
+
+}
+
+.button-config{
+width: 15rem;
+height: 4rem;
+background: #5B5B5B;
+border-radius: 12px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 24px;
+text-align: center;
+border: none;
+color: #FFFFFF;
+margin: 1rem;
+
+
+
+
+
+}
+
+.suporte-config{
+
+    width: 75%;
+    height: 20%;
+    border-radius: 37px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+
+}
+
+.text-suporte{
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 1rem;
+line-height: 32px;
+align-items: center;
+color: #2D3436;
+border-bottom: 1px solid #ccc;
+
+
+}
+
+.lista-suporte{
+    width: 100%;
+    list-style-type: disc; /* Define o tipo de marcador como uma bolinha */
+}
+
+.lista-suporte li::marker {
+    color: #334E70; /* Define a cor do marcador */
+  }
+
+.title-suporte{
+
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 2rem;
+line-height: 54px;
+/* identical to box height */
+text-align: center;
+color: #2D3436;
+margin: 1rem;
+
+
+}
+
+.footer-config{
+    width: 100%;
+    height: 15vh;
+    background-color: #334E70;
+  }

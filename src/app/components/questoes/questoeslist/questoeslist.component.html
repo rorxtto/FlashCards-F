@@ -1,0 +1,68 @@
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                
+                <div class="card-body">
+                    <h1 style="text-align: center;"> Listagem de Questões </h1>
+
+                    <button type="button" class="btn btn-primary btn-rounded mb-2" mdbRipple (click)="new()" routerLinkActive="router-link-active" >Novo +</button>
+                    <button type="button" class="btn btn-success btn-rounded mb-2 ms-2 float-end" mdbRipple (click)="materiasList()" routerLinkActive="router-link-active" > <- Matérias</button>
+
+                    <table border=1 class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Submatéria</th>
+                                <th>Enunciado</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @for (questoes of questoes; track $index) {
+                                <tr>
+                                    <td>  {{questoes.id}} </td>
+                                    @if (questoes.submateria) {
+                                    <td> {{questoes.submateria.nome}} </td>} @else {
+                                        <td> --- </td>
+                                    }
+                                    <td> {{questoes.enunciado}}</td>
+                                    <td> <button type="button" class="btn btn-primary btn-rounded" mdbRipple (click)="edit(questoes)" routerLinkActive="router-link-active" >Editar</button> </td>
+                                    <td> <button type="button" class="btn btn-danger btn-rounded" mdbRipple (click)="deleteById(questoes)" >Deletar</button> </td>
+
+                                </tr>
+                            }
+                                
+                        </tbody>
+
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #modalQuestoesDetalhe>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cadastro Questoes</h5>
+        <button
+          type="button"
+          class="btn-close"
+          aria-label="Close"
+          (click)="modalRef.close()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <app-questoesdetails [questoes]="questoesEdit" (retorno)="retornoDetalhe($event)"></app-questoesdetails>
+      </div>
+     
+    </ng-template>
+
+
+
+

@@ -1,0 +1,438 @@
+.topSection {
+
+    width: 100%;
+    min-height: 75vh;
+    background: #334E70;
+    border-bottom-left-radius: 30% 5%;
+    border-bottom-right-radius: 30% 5%;
+    overflow: hidden;
+    /* Para garantir que o conteúdo não ultrapasse a topSection */
+}
+
+.navbar.bg-body-tertiary {
+    background-color: #334E70 !important;
+    box-shadow: none !important;
+  }
+
+.nav-link {
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 33px;
+    letter-spacing: 0.02em;
+    color: #5B5B5B;
+    margin: 0px;
+
+}
+
+.button-login{
+    width: 6rem;
+    height: 2.75rem;
+    background: conic-gradient(from 90deg at 50% 100%, rgb(255, 255, 255) 0deg, rgb(255, 255, 255) 360deg);
+    box-shadow: rgba(0, 0, 0, 0.03) 0px 20px 24px;
+    border-radius: 80px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.9rem;
+    line-height: 33px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: rgb(91, 91, 91);
+    border: none;
+    margin-left: 10px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.button-cadastrar{
+    width: 6rem;
+    height: 2.75rem;
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: rgba(0, 0, 0, 0.03) 0px 20px 24px;
+    border-radius: 80px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.9rem;
+    line-height: 33px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: rgb(255, 255, 255);
+    border: none;
+    margin-left: 10px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-top {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10rem;
+   
+}
+
+.wrap-container-top {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.title-container-top {
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2.5vw;
+    line-height: 3rem;
+    color: #83839A;
+
+
+}
+
+.text-container-top {
+
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 160%;
+
+
+    color: #FFFFFF;
+
+
+}
+
+.button-acessar{
+    display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 30px;
+  gap: 10px;
+  width: 8rem;
+  height: 3rem;
+  background: #7F98B7;
+  border-radius: 30px;
+  border: none;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: #FFFFFF;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin-bottom: 10px;
+  text-decoration: none;
+}
+
+.topSection1 {
+
+    width: 100%;
+    min-height: 105vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    
+
+}
+
+.topSection1 {
+
+    width: 100%;
+    min-height: 105vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    
+
+}
+
+.topSection1 header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    width: 75%;
+}
+
+.container-top1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    width: 75%;
+    flex-wrap: wrap;
+}
+
+
+.highlight-container-top1 {
+
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 4rem;
+    line-height: 100%;
+
+
+    /* Accent gradient */
+    background: linear-gradient(90deg, #136CB5 0%, #49BBBD 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+
+}
+
+.text-container-top1 {
+
+    text-align: center;
+    padding: 20px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 1.5rem;
+    line-height: 130%;
+    /* identical to box height, or 42px */
+
+    /* Half dark text color */
+    color: rgba(1, 5, 20, 0.8);
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+
+}
+
+.footer-container-top1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+
+.topSection2 {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    width: 370px;
+    height: 536px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 5px;
+    margin-bottom: 5rem;
+
+}
+
+.card:hover{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    filter: drop-shadow(0px 8px 8px rgba(38, 50, 56, 0.12)) drop-shadow(0px 16px 24px rgba(38, 50, 56, 0.08));
+}
+
+.plans-title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-best{
+
+
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 800;
+font-size: 12px;
+line-height: 15px;
+
+letter-spacing: 2.5px;
+text-transform: uppercase;
+
+/* Black */
+color: #2D3436;
+
+
+
+box-sizing: border-box;
+
+width: 90px;
+height: 32px;
+background-color: #FFFFFF;
+
+/* Purple / Dark */
+border: 1px solid #6C5CE7;
+border-radius: 99px;
+
+}
+
+.price {
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -1px;
+    display: flex;
+    align-items: baseline;
+
+    /* Black */
+    color: #2D3436;
+
+
+}
+
+.description {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.icon {
+    margin-top: 20px;
+    display: flex;
+    justify-content: start;
+    text-align: start;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 32px;
+    color: #2D3436;
+
+
+}
+
+.icon img {
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+}
+
+.btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    background: white;
+    border-radius: 16px;
+    width: 306px;
+    height: 64px;
+
+
+    /* 24 sp • Paragraph Bold */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+
+    /* White */
+    color: #334E70;
+
+    border: 1px solid rgba(204, 204, 204, 1); /* Borda preta de 2px */
+
+}
+
+.btn:hover {
+    background: #334E70;
+    color: #FFFFFF;
+}
+
+.footer-LandingPage{
+    margin-top: 10rem;
+    height: 15vh;
+    width: 100%;
+    background-color: #334E70;
+}
+
+@media (max-width: 1200px) {
+    .highlight-container-top,
+    .title-container-top {
+        font-size: 3.5vw;
+    }
+}
+
+@media (max-width: 992px) {
+    .highlight-container-top,
+    .title-container-top {
+        font-size: 3.5vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .highlight-container-top,
+    .title-container-top {
+        font-size: 3.5vw;
+    }
+
+    .card{
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        filter: drop-shadow(0px 8px 8px rgba(38, 50, 56, 0.12)) drop-shadow(0px 16px 24px rgba(38, 50, 56, 0.08));
+    }
+}
+
+@media (max-width: 576px) {
+    .highlight-container-top,
+    .title-container-top {
+        font-size: 3.5vw;
+    }
+
+    .card{
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        filter: drop-shadow(0px 8px 8px rgba(38, 50, 56, 0.12)) drop-shadow(0px 16px 24px rgba(38, 50, 56, 0.08));
+    }
+}
+
+@media (max-width: 480px) {
+    .card{
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        filter: drop-shadow(0px 8px 8px rgba(38, 50, 56, 0.12)) drop-shadow(0px 16px 24px rgba(38, 50, 56, 0.08));
+    }
+}
+
+@media (max-width: 361px) {
+    .card{
+        width: 350px;
+    }
+}

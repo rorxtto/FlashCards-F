@@ -1,0 +1,76 @@
+<div class="flashcards">
+
+  <div class="wrap-flashcards" (click)="flipCard()">
+
+
+    <div class="card" [class.flipped]="isFlipped">
+        <div class="cardfront">
+          
+
+          <h1 class="card-front-question">
+            {{questoes.enunciado}}
+
+          </h1>
+
+        
+          <p class="card-front-text">
+            @for (alternativa of questoes.alternativas; track $index) {
+              @if (alternativa.texto != null) {
+            <span> {{ getLetter($index) }}) </span > {{alternativa.texto}}<br>
+            }
+          }
+          </p>
+          
+         
+
+        </div>
+        <div class="cardback">
+
+          @if (questoes?.alternativaCorreta?.texto != null) {
+          <h1 class="card-front-question">
+
+            Resposta correta: {{questoes?.alternativaCorreta?.texto}}
+          </h1>
+        }
+        <p class="card-front-text">
+          Justificativa: {{questoes.justificativa}}
+        </p>
+        
+
+         
+
+        </div>
+        
+      </div>
+
+      <p class="flip-instruction">Clique no card para virá-lo</p>
+    </div>
+
+
+
+    <div class="container-buttons">
+      <button (click)="avaliarERenderizarNovaQuestao(1)" style="background-color: #3B5A14;" class="button-flashcards">
+        Muito fácil<br> (Reaparece após 45 min)
+      </button>
+      <button (click)="avaliarERenderizarNovaQuestao(2)" style="background-color: #005156;" class="button-flashcards">
+        Fácil<br>(Reaparece após 30 min)
+      </button>
+      <button (click)="avaliarERenderizarNovaQuestao(3)" style="background-color: #858700;" class="button-flashcards">
+        Médio<br>(Reaparece após 15 min)
+      </button>
+      <button (click)="avaliarERenderizarNovaQuestao(4)" style="background-color: #7F3D00;" class="button-flashcards">
+        Difícil<br>(Reaparece após 10 min)
+      </button>
+      <button (click)="avaliarERenderizarNovaQuestao(5)" style="background-color: #730000;" class="button-flashcards">
+        Muito difícil<br>(Reaparece após 5 min)
+      </button>
+    </div>
+
+    
+  </div>
+
+
+
+
+
+

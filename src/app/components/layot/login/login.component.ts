@@ -23,20 +23,23 @@ export class LoginComponent {
     this.loginService.removerToken();
   }
 
-  logar(){
+  logar() {
     this.loginService.logar(this.login).subscribe({
-      next: token => {
-        if (token) {
-          this.loginService.addToken(token);
-          this.router.navigate(['/admin/materiasRenderizadas']);
-        } else {
-          alert('Usuário ou senha incorretos!');
-        }
+      next: token => { 
+        console.log(token);
+        if (token) this.loginService.addToken(token);
+        this.router.navigate(['/admin/materiasRenderizadas']);
       },
-      error: error => {
-        alert(error.error || 'Erro ao efetuar login. Verifique sua assinatura.');
+      error: erro => { 
+        if (erro.status === 403) {
+          alert('Seu plano não está ativo. Renove sua assinatura para continuar.');
+        } else {
+          alert('Erro ao tentar logar. Verifique se suas credenciais estão corretas.');
+        }
+        console.error(erro);
       }
     });
   }
+  
 
 }

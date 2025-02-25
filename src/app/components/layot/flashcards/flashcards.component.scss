@@ -77,8 +77,10 @@
   border-radius: 10px;
   padding: 20px;
   border: none;
-  justify-content: flex-start; /* Mantém o conteúdo no topo */
-  overflow-y: auto; 
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color:#DFEAE9; 
+  transition: all 0.3s ease; 
 }
 
 .cardfront {

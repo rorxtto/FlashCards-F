@@ -26,10 +26,8 @@ export const meuhttpInterceptor: HttpInterceptorFn = (request, next) => {
 	  
 	  
         if (err.status === 401) {
-          alert('erro 401');
           router.navigate(['/login']);
         } else if (err.status === 403) {
-          alert('erro 403');
 		  router.navigate(['/login']);
         } else {
           console.error('HTTP error:', err);

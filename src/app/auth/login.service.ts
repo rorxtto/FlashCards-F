@@ -49,5 +49,11 @@ export class LoginService {
       return false;
   }
 
+  isAuthenticated(): boolean {
+    let token = this.getToken();
+    return token !== null && token !== undefined && token !== '';
+  }
+  
+
 
 }

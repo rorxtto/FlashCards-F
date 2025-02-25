@@ -36,6 +36,11 @@
     flex-direction: column;
     justify-content: space-evenly;
     cursor: pointer; // Adiciona um cursor de mão para indicar que o cartão é clicável
+    overflow-y: auto;
+    scrollbar-width: none; /* Deixa a barra de rolagem mais fina (funciona no Firefox) */
+    scrollbar-color:#DFEAE9; /* Define as cores da barra de rolagem (funciona no Firefox) */
+    transition: all 0.3s ease; /* Transição suave para mudanças */
+
 
 }
   

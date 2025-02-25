@@ -3,15 +3,16 @@
   <div class="wrap-flashcards" (click)="flipCard()">
 
 
-    <div class="card" [class.flipped]="isFlipped">
-        <div class="cardfront">
+    <div class="card"   [class.flipped]="isFlipped">
+        <div #cardContainerFront class="cardfront">
           
 
           <h1 class="card-front-question">
-            {{questoes.enunciado}}
+           {{questoes.id}} {{questoes.enunciado}}
 
           </h1>
 
+          
         
           <p class="card-front-text">
             @for (alternativa of questoes.alternativas; track $index) {
@@ -24,7 +25,7 @@
          
 
         </div>
-        <div class="cardback">
+        <div #cardContainerBack class="cardback">
 
           @if (questoes?.alternativaCorreta?.texto != null) {
           <h1 class="card-front-question">
@@ -49,20 +50,17 @@
 
 
     <div class="container-buttons">
-      <button (click)="avaliarERenderizarNovaQuestao(1)" style="background-color: #3B5A14;" class="button-flashcards">
-        Muito fácil<br> (Reaparece após 45 min)
-      </button>
       <button (click)="avaliarERenderizarNovaQuestao(2)" style="background-color: #005156;" class="button-flashcards">
-        Fácil<br>(Reaparece após 30 min)
+        Fácil<br>(Reaparece após 1 min)
       </button>
       <button (click)="avaliarERenderizarNovaQuestao(3)" style="background-color: #858700;" class="button-flashcards">
-        Médio<br>(Reaparece após 15 min)
+        Médio<br>(Reaparece após 30 seg)
       </button>
       <button (click)="avaliarERenderizarNovaQuestao(4)" style="background-color: #7F3D00;" class="button-flashcards">
-        Difícil<br>(Reaparece após 10 min)
+        Difícil<br>(Reaparece após 20 seg)
       </button>
       <button (click)="avaliarERenderizarNovaQuestao(5)" style="background-color: #730000;" class="button-flashcards">
-        Muito difícil<br>(Reaparece após 5 min)
+        Muito difícil<br>(Reaparece após 10 seg)
       </button>
     </div>
 

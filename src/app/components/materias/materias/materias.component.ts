@@ -51,6 +51,9 @@ export class MateriasComponent {
       
         this.materiaSelecionada = materia; 
         this.submaterias = materia.submateria; 
+        // DEBUG: Verifique se `quantidadeQuestoes` está vindo do backend
+      console.log(this.submaterias);
+      
         this.modalRef = this.modalService.open(this.modalSubmaterias);
       },
       error: erro => {

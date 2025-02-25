@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, Input } from '@angular/core';
+import { Component, OnInit, inject, AfterViewInit, ElementRef, ViewChild, Input } from '@angular/core';
 import {
   trigger,
   state,
@@ -39,7 +39,11 @@ import { Alternativas } from '../../../models/alternativas';
     ]),
   ],
 })
-export class FlashcardsComponent implements OnInit {
+export class FlashcardsComponent implements OnInit, AfterViewInit{
+
+  @ViewChild('cardContainerFront', { static: false }) cardContainerFront!: ElementRef;
+  @ViewChild('cardContainerBack', { static: false }) cardContainerBack!: ElementRef;
+
   router = inject(ActivatedRoute);
   materiaInstance = new Materia();
   submateriaInstance = new Submateria(this.materiaInstance);
@@ -131,12 +135,11 @@ export class FlashcardsComponent implements OnInit {
     //ETAPA 2 - RENDERIZAR PRÓXIMA QUESTÃO
 
 
-    let muitoFacilMinutos = 45;
-    let facilMinutos = 30;
-    let mediaMinutos = 15;
-    let dificilMinutos = 10;
-    let muitoDificilMinutos = 5;
-
+    let muitoFacilMinutos = 2;  // 1 minuto
+    let facilMinutos = 1;       // 1 minuto
+    let mediaMinutos = 0.5;     // 30 segundos
+    let dificilMinutos = 0.33;  // 20 segundos
+    let muitoDificilMinutos = 0.16; // 10 segundos
 
     if ( 
       this.subtrairDatas(agora, respostas.dataHoraUltimaMuitoFacil, 'ms') >
@@ -268,7 +271,32 @@ export class FlashcardsComponent implements OnInit {
     this.isFlipped = !this.isFlipped;
   }
 
+  ngAfterViewInit() {
+    // Verifica e ajusta o 'justify-content' para ambos os elementos
+    this.updateJustifyContent(this.cardContainerFront);
+    this.updateJustifyContent(this.cardContainerBack);
+
+    // Observa as mudanças no tamanho do conteúdo
+    const observer = new ResizeObserver(() => {
+      this.updateJustifyContent(this.cardContainerFront);
+      this.updateJustifyContent(this.cardContainerBack);
+    });
+
+    // Observa ambos os elementos
+    observer.observe(this.cardContainerFront.nativeElement);
+    observer.observe(this.cardContainerBack.nativeElement);
+  }
+
+  // Função genérica para ajustar 'justify-content'
+  updateJustifyContent(card: ElementRef) {
+    const element = card.nativeElement;
+    if (element.scrollHeight > element.clientHeight) {
+      element.style.justifyContent = 'flex-start';
+    } else {
+      element.style.justifyContent = 'center';
+    }
+  }
+
+
   
 }
-
-

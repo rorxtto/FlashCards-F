@@ -7,6 +7,8 @@ import { Submateria } from '../../../models/submateria';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 import { Router, RouterLink } from '@angular/router';
+import { QuestoesService } from '../../../services/questoes.service';
+import { SubmateriaService } from '../../../services/submateria.service';
 
 
 @Component({
@@ -29,6 +31,8 @@ export class MateriasComponent {
 
   constructor(
     private materiaService: MateriaService,
+    private questoesService: QuestoesService,
+    private submateriaService: SubmateriaService
 
   ) {
     this.findAll();
@@ -48,12 +52,32 @@ export class MateriasComponent {
   buscarSubmateria(id: number): void {
     this.materiaService.findById(id).subscribe({
       next: materia => {
-      
-        this.materiaSelecionada = materia; 
-        this.submaterias = materia.submateria; 
-        // DEBUG: Verifique se `quantidadeQuestoes` está vindo do backend
-      console.log(this.submaterias);
-      
+        this.materiaSelecionada = materia;
+        this.submaterias = materia.submateria;
+  
+        // Primeiro, mantém o loop atual para preencher a quantidadeRespondida
+        for (let i = 0; i < this.submaterias.length; i++) {
+          this.submaterias[i].quantidadeRespondida = this.questoesService.retornarContador(this.submaterias[i].id);
+        }
+  
+        // Agora, busca a quantidade de questões (você pode manter o `findSubmateriasComQuantidadeQuestoes`)
+        this.submateriaService.findSubmateriasComQuantidadeQuestoes().subscribe({
+          next: submateriasComQuantidade => {
+            // Atribua a quantidade de questões para cada submatéria
+            this.submaterias.forEach(submateria => {
+              const submateriaEncontrada = submateriasComQuantidade.find(sm => sm.id === submateria.id);
+              if (submateriaEncontrada) {
+                submateria.quantidadeQuestoes = submateriaEncontrada.quantidadeQuestoes;
+              }
+            });
+          
+          },
+          error: erro => {
+            alert('Erro ao buscar quantidade de questões!');
+          }
+        });
+  
+        // Abre o modal
         this.modalRef = this.modalService.open(this.modalSubmaterias);
       },
       error: erro => {
@@ -61,6 +85,8 @@ export class MateriasComponent {
       }
     });
   }
+  
+  
 
   retornoSubmateria(submateria : Submateria){
 
@@ -72,6 +98,8 @@ export class MateriasComponent {
   }
 
 }
+
+
 
 
 

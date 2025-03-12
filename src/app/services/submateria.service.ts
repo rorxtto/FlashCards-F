@@ -40,10 +40,5 @@ findById(id: number): Observable<Submateria> {
   findSubmateriasComQuantidadeQuestoes(): Observable<Submateria[]> {
     return this.http.get<Submateria[]>(this.API+"/com-quantidade-questoes");
   }
-  
-
-  
-
-  
 }
 

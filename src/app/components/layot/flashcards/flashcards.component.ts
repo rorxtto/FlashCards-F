@@ -107,7 +107,9 @@ export class FlashcardsComponent implements OnInit, AfterViewInit{
   //1: MUITO FÁCIL, 2: FÁCIL, 3: MÉDIO, 4: DIFÍCIL E 5: MUITO DIFÍCIL
   avaliarERenderizarNovaQuestao(nivel: number) {
     let respostas = new Respostas();
-    let aux = this.questoesService.getRespostas();
+    respostas.contador = 0;
+    respostas.submateriaId = this.idSubmateria;
+    let aux = this.questoesService.getRespostas(this.idSubmateria);
     let agora = this.getBrasiliaTime();
 
 
@@ -186,6 +188,7 @@ export class FlashcardsComponent implements OnInit, AfterViewInit{
       this.carregarQuestao(this.idSubmateria, this.questoes.id);
     }
 
+    respostas.contador++;
     this.questoesService.setRespostas(respostas);
   }
 
@@ -296,6 +299,9 @@ export class FlashcardsComponent implements OnInit, AfterViewInit{
       element.style.justifyContent = 'center';
     }
   }
+
+
+  
 
 
   

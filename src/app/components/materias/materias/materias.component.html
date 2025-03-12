@@ -39,13 +39,27 @@
       @if (submaterias.length > 0) {
       <ul  class="list-group list-group-flush" >
         @for (submateria of submaterias; track $index) {
-        <li (click)="modalRef.close()" routerLink="/admin/flashcards/{{submateria.id}}" routerLinkActive="router-link-active"  class="list-group-item" >{{ submateria.nome }} {{ submateria.quantidadeQuestoes }}</li>
-
+          <li (click)="modalRef.close()" 
+          routerLink="/admin/flashcards/{{submateria.id}}" 
+          routerLinkActive="router-link-active" 
+          class="list-group-item">
+        
+        {{ submateria.nome }} - 
+        <span data-bs-toggle="tooltip" data-bs-placement="top" title="Questões Respondidas Hoje">
+          ✅ {{ submateria.quantidadeRespondida }}
+        </span> - 
+        <span data-bs-toggle="tooltip" data-bs-placement="top" title="Total de Questões">
+          📋 {{ submateria.quantidadeQuestoes }}
+        </span>
+      </li>
+      
       }
       </ul>} @else {
       <p class="list-group-item" *ngIf="submaterias.length === 0">Nenhuma submatéria disponível.</p>}
     </div>
   </ng-template>
+
+  
 
 
 

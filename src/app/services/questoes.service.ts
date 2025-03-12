@@ -14,9 +14,16 @@ export class QuestoesService {
 
   constructor() {}
 
-  findNextQuestionBySubmateria(idSubmateria: number, idQuestaoEmTela: number): Observable<Questoes> {
+  findNextQuestionBySubmateria(
+    idSubmateria: number,
+    idQuestaoEmTela: number
+  ): Observable<Questoes> {
     return this.http.get<Questoes>(
-      this.API + '/findNextQuestionBySubmateria/' + idSubmateria + '/'+idQuestaoEmTela
+      this.API +
+        '/findNextQuestionBySubmateria/' +
+        idSubmateria +
+        '/' +
+        idQuestaoEmTela
     );
   }
 
@@ -46,18 +53,63 @@ export class QuestoesService {
     return this.http.get<Questoes>(this.API + '/findById/' + id);
   }
 
+  retornarContador(submateriaId: number){
+    let aux = localStorage.getItem('respostas');
+    let respostas: Respostas[] = [];
 
-  
-  getRespostas() {
-    let respostas = localStorage.getItem('respostas');
-    if (respostas)
-      return JSON.parse(respostas) as Respostas;
-    else return null;
+    if (aux) respostas = JSON.parse(aux) as Respostas[];
+
+    let achou: boolean = false;
+    for (let i = 0; i < respostas.length; i++) {
+      if (respostas[i].submateriaId == submateriaId) {
+        return respostas[i].contador;
+      }
+    }
+    return 0;
   }
 
-  setRespostas(respostas: Respostas){
-    localStorage.setItem('respostas', JSON.stringify(respostas));
+  getRespostas(submateriaId: number) {
+    let aux = localStorage.getItem('respostas');
+    let respostas: Respostas[] = [];
+
+    if (aux) respostas = JSON.parse(aux) as Respostas[];
+
+    let achou: boolean = false;
+    for (let i = 0; i < respostas.length; i++) {
+      if (respostas[i].submateriaId == submateriaId) {
+        return respostas[i];
+      }
+    }
+
+    return null;
   }
 
+  setRespostas(respostasNovas: Respostas) {
+    let zerar = false;
+    //FAZER UM IF AQUI VERIFICANDO SE A DATAHORA ATUAL E 24H MAIOR DO QUE AS RESPOTSAS QUE CHEGARAM
+    //SE SIM,
 
+    if (zerar) {
+      let respostas: Respostas[] = [];
+      respostas.push(respostasNovas);
+      localStorage.setItem('respostas', JSON.stringify(respostas));
+    } else {
+      let aux = localStorage.getItem('respostas');
+      let respostas: Respostas[] = [];
+
+      if (aux) respostas = JSON.parse(aux) as Respostas[];
+
+      let achou: boolean = false;
+      for (let i = 0; i < respostas.length; i++) {
+        if (respostas[i].submateriaId == respostasNovas.submateriaId) {
+          achou = true;
+          respostas[i] = respostasNovas;
+        }
+      }
+
+      if (!achou) respostas.push(respostasNovas);
+
+      localStorage.setItem('respostas', JSON.stringify(respostas));
+    }
+  }
 }

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Materia } from '../models/materia';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class MateriaService {
 
   http = inject (HttpClient);
 
-  API = "http://localhost:8080/materia"
+  API = environment.SERVIDOR + "/materia"
 
   constructor() { }
 
@@ -37,5 +38,7 @@ findById(id: number): Observable<Materia> {
 
   
 }
+
+
 
 

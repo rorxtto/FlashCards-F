@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Questoes } from '../models/questoes';
 import { Respostas } from '../models/respostas';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ import { Respostas } from '../models/respostas';
 export class QuestoesService {
   http = inject(HttpClient);
 
-  API = 'http://localhost:8080/questoes';
+  API = environment.SERVIDOR + '/questoes';
 
   constructor() {}
 
@@ -112,4 +113,7 @@ export class QuestoesService {
       localStorage.setItem('respostas', JSON.stringify(respostas));
     }
   }
+  
 }
+
+

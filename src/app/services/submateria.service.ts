@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Submateria } from '../models/submateria';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 
 
@@ -12,7 +13,7 @@ export class SubmateriaService {
 
   http = inject (HttpClient);
 
-  API = "http://localhost:8080/submateria"
+  API = environment.SERVIDOR + "/submateria"
 
   constructor() { }
 

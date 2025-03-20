@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-reset-password',
@@ -24,7 +25,7 @@ export class ResetPasswordComponent {
     // Logando o payload para depuração
     console.log('Payload enviado:', payload);
 
-    this.http.post('http://localhost:8080/api/register/reset-password', payload).subscribe({
+    this.http.post( environment.SERVIDOR + '/api/register/reset-password', payload).subscribe({
         next: (response) => {
             alert('Senha redefinida com sucesso!');
             this.router.navigate(['/login']); 

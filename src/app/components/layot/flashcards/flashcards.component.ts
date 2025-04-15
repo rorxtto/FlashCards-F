@@ -14,6 +14,7 @@ import { Materia } from '../../../models/materia';
 import { Respostas } from '../../../models/respostas';
 import { Alternativas } from '../../../models/alternativas';
 
+
 @Component({
   selector: 'app-flashcards',
   standalone: true,

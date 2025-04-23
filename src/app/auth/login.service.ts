@@ -7,6 +7,7 @@ import { Usuario } from './usuario';
 import { environment } from '../../environments/environment';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -30,6 +31,7 @@ export class LoginService {
   removerToken() {
     localStorage.removeItem('token');
   }
+  
 
   getToken() {
     return localStorage.getItem('token');

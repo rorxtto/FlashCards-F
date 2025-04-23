@@ -29,6 +29,7 @@ export class LoginComponent {
         console.log(token);
         if (token) this.loginService.addToken(token);
         this.router.navigate(['/admin/materiasRenderizadas']);
+        
       },
       error: erro => { 
         if (erro.status === 403) {

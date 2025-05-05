@@ -1,3 +1,3 @@
 export const environment = {
-    SERVIDOR: "/api"
+    SERVIDOR: "https://www.medcardsrevalida.com.br"
 };

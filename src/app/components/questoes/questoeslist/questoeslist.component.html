@@ -8,48 +8,148 @@
                 <div class="card-body">
                     <h1 style="text-align: center;"> Listagem de Questões </h1>
 
-                    <button type="button" class="btn btn-primary btn-rounded mb-2" mdbRipple (click)="new()" routerLinkActive="router-link-active" >Novo +</button>
-                    <button type="button" class="btn btn-success btn-rounded mb-2 ms-2 float-end" mdbRipple (click)="materiasList()" routerLinkActive="router-link-active" > <- Matérias</button>
-
-                    <table border=1 class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Submatéria</th>
-                                <th>Enunciado</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            @for (questoes of questoes; track $index) {
-                                <tr>
-                                    <td>  {{questoes.id}} </td>
-                                    @if (questoes.submateria) {
-                                    <td> {{questoes.submateria.nome}} </td>} @else {
-                                        <td> --- </td>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-primary btn-rounded mb-2" mdbRipple (click)="new()" routerLinkActive="router-link-active">Novo +</button>
+                            <button type="button" class="btn btn-success btn-rounded mb-2 ms-2" mdbRipple (click)="materiasList()" routerLinkActive="router-link-active"> <- Matérias</button>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Pesquisar por enunciado..." 
+                                    [(ngModel)]="filtroEnunciado" (keyup)="onSearch()">
+                                <button class="btn btn-outline-primary" type="button" (click)="onSearch()">Buscar</button>
+                                <button class="btn btn-outline-secondary" type="button" (click)="limparFiltros()" 
+                                    [disabled]="!filtroEnunciado && !submateriaId">Limpar</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Opções de tamanho da página -->
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="pageSize">Itens por página:</label>
+                                <select class="form-select form-select-sm" id="pageSize" [(ngModel)]="pageSize" (change)="changePageSize()">
+                                    @for (size of pageSizeOptions; track $index) {
+                                        <option [value]="size">{{ size }}</option>
                                     }
-                                    <td> {{questoes.enunciado}}</td>
-                                    <td> <button type="button" class="btn btn-primary btn-rounded" mdbRipple (click)="edit(questoes)" routerLinkActive="router-link-active" >Editar</button> </td>
-                                    <td> <button type="button" class="btn btn-danger btn-rounded" mdbRipple (click)="deleteById(questoes)" >Deletar</button> </td>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-8 text-end">
+                            <span>Mostrando {{ questoes.length }} de {{ totalItems }} questões</span>
+                        </div>
+                    </div>
 
-                                </tr>
-                            }
-                                
-                        </tbody>
+                    <!-- Indicador de carregamento -->
+                    @if (carregando) {
+                        <div class="text-center my-3">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Carregando...</span>
+                            </div>
+                            <p class="mt-2">Carregando questões...</p>
+                        </div>
+                    }
 
+                    <!-- Tabela de questões -->
+                    @if (!carregando && questoes.length > 0) {
+                        <div class="table-responsive">
+                            <table border=1 class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Submatéria</th>
+                                        <th>Enunciado</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
 
-                    </table>
+                                <tbody>
+                                    @for (questao of questoes; track questao.id) {
+                                        <tr>
+                                            <td>{{ questao.id }}</td>
+                                            <td>
+                                                @if (questao.submateria) {
+                                                    {{ questao.submateria.nome }}
+                                                } @else {
+                                                    <span class="text-muted">---</span>
+                                                }
+                                            </td>
+                                            <td>{{ questao.enunciado | slice:0:100 }}{{ questao.enunciado.length > 100 ? '...' : '' }}</td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-sm btn-primary" mdbRipple (click)="edit(questao)">
+                                                        Editar
+                                                    </button>
+                                                    <button type="button" class="btn btn-sm btn-danger ms-1" mdbRipple (click)="deleteById(questao)">
+                                                        Deletar
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    } @else if (!carregando && questoes.length === 0) {
+                        <div class="alert alert-info text-center">
+                            Nenhuma questão encontrada.
+                        </div>
+                    }
+
+                    <!-- Controles de Paginação Otimizados -->
+                    @if (totalPages > 0) {
+                        <div class="d-flex justify-content-center mt-3">
+                            <nav>
+                                <ul class="pagination">
+                                    <!-- Botão Primeira Página -->
+                                    <li class="page-item" [class.disabled]="currentPage === 0">
+                                        <a class="page-link" (click)="goToPage(0)" aria-label="Primeira">
+                                            <span aria-hidden="true">&laquo;&laquo;</span>
+                                        </a>
+                                    </li>
+                                    
+                                    <!-- Botão Anterior -->
+                                    <li class="page-item" [class.disabled]="currentPage === 0">
+                                        <a class="page-link" (click)="prevPage()" aria-label="Anterior">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    
+                                    <!-- Números de Página Dinâmicos -->
+                                    @for (page of getPagesArray(); track $index) {
+                                        <li class="page-item" [class.active]="currentPage === page">
+                                            <a class="page-link" (click)="goToPage(page)">{{ page + 1 }}</a>
+                                        </li>
+                                    }
+                                    
+                                    <!-- Botão Próximo -->
+                                    <li class="page-item" [class.disabled]="currentPage === totalPages - 1">
+                                        <a class="page-link" (click)="nextPage()" aria-label="Próximo">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                    
+                                    <!-- Botão Última Página -->
+                                    <li class="page-item" [class.disabled]="currentPage === totalPages - 1">
+                                        <a class="page-link" (click)="goToPage(totalPages - 1)" aria-label="Última">
+                                            <span aria-hidden="true">&raquo;&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-
+<!-- Modal para detalhes da questão -->
 <ng-template #modalQuestoesDetalhe>
     <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cadastro Questoes</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Cadastro Questões</h5>
         <button
           type="button"
           class="btn-close"
@@ -60,9 +160,4 @@
       <div class="modal-body">
         <app-questoesdetails [questoes]="questoesEdit" (retorno)="retornoDetalhe($event)"></app-questoesdetails>
       </div>
-     
-    </ng-template>
-
-
-
-
+</ng-template>

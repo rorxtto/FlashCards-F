@@ -5,13 +5,16 @@ import { Submateria } from '../../../models/submateria';
 import { SubmateriasdetailsComponent } from '../submateriasdetails/submateriasdetails.component';
 import { SubmateriaService } from '../../../services/submateria.service';
 import { Materia } from '../../../models/materia';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
 
 
 
 @Component({
   selector: 'app-submateriaslist',
   standalone: true,
-  imports: [RouterLink, MdbModalModule, SubmateriasdetailsComponent],
+  imports: [RouterLink, MdbModalModule, SubmateriasdetailsComponent, CommonModule, FormsModule],
   templateUrl: './submateriaslist.component.html',
   styleUrl: './submateriaslist.component.scss'
 })
@@ -23,6 +26,18 @@ export class SubmateriaslistComponent {
   @Input() materiaId!: number; // Recebe o ID da matéria
   @Input("esconderBotoes") esconderBotoes: boolean = false;
   @Output("retorno") retorno = new EventEmitter<any>()
+
+  // Variáveis para paginação
+  currentPage: number = 0;
+  pageSize: number = 10;
+  totalItems: number = 0;
+  totalPages: number = 0;
+  pageSizeOptions: number[] = [5, 10, 25, 50, 100];
+  
+  // Variáveis para filtro e pesquisa
+  filtroNome: string = '';
+  private searchTerms = new Subject<string>();
+  carregando: boolean = false;
 
   modalService = inject (MdbModalService);
   @ViewChild("modalSubmateriaDetalhe") modalSubmateriaDetalhe!: TemplateRef<any>;
@@ -44,11 +59,19 @@ export class SubmateriaslistComponent {
     }
 
     if(submateriaNova){
-    this.lista.push(submateriaNova);
-
+      this.lista.push(submateriaNova);
     }
 
-    this.findAll();
+    // Configurar o debounce para a pesquisa
+    this.searchTerms.pipe(
+      debounceTime(400),
+      distinctUntilChanged()
+    ).subscribe(() => {
+      this.currentPage = 0; // Resetar para a primeira página ao pesquisar
+      this.loadSubmateriasPaginated();
+    });
+
+    this.loadSubmateriasPaginated();
   }
 
   findAll(){
@@ -62,7 +85,132 @@ export class SubmateriaslistComponent {
     });
   }  
 
+  loadSubmateriasPaginated() {
+    this.carregando = true;
+    
+    // Se tiver ID de matéria e filtro de nome
+    if ((this.idMateria > 0 || this.materiaId) && this.filtroNome) {
+      const id = this.idMateria > 0 ? this.idMateria : this.materiaId;
+      this.submateriaService.findAllPaginatedAndFiltered(
+        this.currentPage, 
+        this.pageSize, 
+        this.filtroNome, 
+        id
+      ).subscribe({
+        next: response => this.handlePaginatedResponse(response),
+        error: erro => this.handleError(erro)
+      });
+    }
+    // Se tiver apenas ID de matéria
+    else if (this.idMateria > 0 || this.materiaId) {
+      const id = this.idMateria > 0 ? this.idMateria : this.materiaId;
+      this.submateriaService.findAllPaginatedByMateriaId(
+        this.currentPage, 
+        this.pageSize, 
+        id
+      ).subscribe({
+        next: response => this.handlePaginatedResponse(response),
+        error: erro => this.handleError(erro)
+      });
+    }
+    // Se tiver apenas filtro de nome
+    else if (this.filtroNome) {
+      this.submateriaService.findAllPaginatedAndFiltered(
+        this.currentPage, 
+        this.pageSize, 
+        this.filtroNome
+      ).subscribe({
+        next: response => this.handlePaginatedResponse(response),
+        error: erro => this.handleError(erro)
+      });
+    }
+    // Se não tiver nenhum filtro
+    else {
+      this.submateriaService.findAllPaginated(
+        this.currentPage, 
+        this.pageSize
+      ).subscribe({
+        next: response => this.handlePaginatedResponse(response),
+        error: erro => this.handleError(erro)
+      });
+    }
+  }
   
+  private handlePaginatedResponse(response: any) {
+    this.lista = response.content;
+    this.totalItems = response.totalElements;
+    this.totalPages = response.totalPages;
+    this.carregando = false;
+  }
+  
+  private handleError(erro: any) {
+    alert('Ocorreu um erro ao carregar as submaterias!');
+    this.carregando = false;
+  }
+  
+  nextPage() {
+    if (this.currentPage < this.totalPages - 1) {
+      this.currentPage++;
+      this.loadSubmateriasPaginated();
+    }
+  }
+
+  prevPage() {
+    if (this.currentPage > 0) {
+      this.currentPage--;
+      this.loadSubmateriasPaginated();
+    }
+  }
+
+  goToPage(page: number) {
+    if (page >= 0 && page < this.totalPages) {
+      this.currentPage = page;
+      this.loadSubmateriasPaginated();
+    }
+  }
+  
+  onSearch() {
+    this.searchTerms.next(this.filtroNome);
+  }
+  
+  limparFiltros() {
+    this.filtroNome = '';
+    this.currentPage = 0;
+    this.loadSubmateriasPaginated();
+  }
+  
+  changePageSize() {
+    this.currentPage = 0; // Resetar para a primeira página ao mudar o tamanho
+    this.loadSubmateriasPaginated();
+  }
+  
+  // Método para mostrar um número limitado de páginas na paginação
+  getPagesArray(): number[] {
+    const maxPagesToShow = 5;
+    const pages: number[] = [];
+    
+    if (this.totalPages <= maxPagesToShow) {
+      // Se tiver menos páginas que o máximo, mostrar todas
+      for (let i = 0; i < this.totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      // Caso contrário, mostrar um subconjunto com a página atual no centro quando possível
+      let startPage = Math.max(0, this.currentPage - Math.floor(maxPagesToShow / 2));
+      let endPage = Math.min(this.totalPages - 1, startPage + maxPagesToShow - 1);
+      
+      // Ajustar se estiver no final
+      if (endPage - startPage < maxPagesToShow - 1) {
+        startPage = Math.max(0, endPage - maxPagesToShow + 1);
+      }
+      
+      for (let i = startPage; i <= endPage; i++) {
+        pages.push(i);
+      }
+    }
+    
+    return pages;
+  }
 
   deleteById(submateria: Submateria){
      if (confirm("Tem certeza que deseja deletar esta submateria?") ) {
@@ -70,7 +218,7 @@ export class SubmateriaslistComponent {
       this.submateriaService.delete(submateria.id).subscribe({
         next: mensagem => {
           alert(mensagem);
-          this.findAll();
+          this.loadSubmateriasPaginated();
         },
         error: erro => {
           alert('Ocorreu algum erro!');
@@ -98,7 +246,7 @@ export class SubmateriaslistComponent {
  }
 
   retornoDetalhe(submateria: Submateria){
-    this.findAll();
+    this.loadSubmateriasPaginated();
     this.modalRef.close();
   }
 
@@ -109,10 +257,4 @@ export class SubmateriaslistComponent {
   select(submateria:Submateria){
     this.retorno.emit(submateria);
   }
-
-  
-
-  
 }
-
-

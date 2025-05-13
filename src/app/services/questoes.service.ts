@@ -32,6 +32,30 @@ export class QuestoesService {
     return this.http.get<Questoes[]>(this.API + '/findAll');
   }
 
+  findAllPaginated(page: number, size: number): Observable<any> {
+    const params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString());
+    
+    return this.http.get<any>(this.API + '/paginated', { params });
+  }
+  
+  findAllPaginatedAndFiltered(page: number, size: number, filtroEnunciado?: string, submateriaId?: number): Observable<any> {
+    let params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString());
+      
+    if (filtroEnunciado) {
+      params = params.set('filtroEnunciado', filtroEnunciado);
+    }
+    
+    if (submateriaId) {
+      params = params.set('submateriaId', submateriaId.toString());
+    }
+    
+    return this.http.get<any>(this.API + '/filtered', { params });
+  }
+
   delete(id: number): Observable<string> {
     return this.http.delete<string>(this.API + '/delete/' + id, {
       responseType: 'text' as 'json',
@@ -115,5 +139,3 @@ export class QuestoesService {
   }
   
 }
-
-

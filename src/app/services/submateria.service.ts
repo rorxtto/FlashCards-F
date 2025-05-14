@@ -73,4 +73,8 @@ export class SubmateriaService {
   findSubmateriasComQuantidadeQuestoes(): Observable<Submateria[]> {
     return this.http.get<Submateria[]>(this.API+"/com-quantidade-questoes");
   }
+  
+  findSubmateriasComQuantidadeQuestoesByMateriaId(materiaId: number): Observable<Submateria[]> {
+    return this.http.get<Submateria[]>(`${this.API}/com-quantidade-questoes/materia/${materiaId}`);
+  }
 }

@@ -38,6 +38,9 @@ export class SubmateriaslistComponent {
   filtroNome: string = '';
   private searchTerms = new Subject<string>();
   carregando: boolean = false;
+  
+  // Flag para controlar o tipo de carregamento
+  usarCarregamentoOtimizado: boolean = true;
 
   modalService = inject (MdbModalService);
   @ViewChild("modalSubmateriaDetalhe") modalSubmateriaDetalhe!: TemplateRef<any>;
@@ -88,6 +91,12 @@ export class SubmateriaslistComponent {
   loadSubmateriasPaginated() {
     this.carregando = true;
     
+    // Verificar se deve usar o carregamento otimizado
+    if (this.usarCarregamentoOtimizado && (this.idMateria > 0 || this.materiaId)) {
+      this.loadSubmateriasComQuantidadeQuestoes();
+      return;
+    }
+    
     // Se tiver ID de matéria e filtro de nome
     if ((this.idMateria > 0 || this.materiaId) && this.filtroNome) {
       const id = this.idMateria > 0 ? this.idMateria : this.materiaId;
@@ -136,6 +145,33 @@ export class SubmateriaslistComponent {
     }
   }
   
+  loadSubmateriasComQuantidadeQuestoes() {
+    this.carregando = true;
+    
+    if (this.idMateria > 0 || this.materiaId) {
+      const id = this.idMateria > 0 ? this.idMateria : this.materiaId;
+      this.submateriaService.findSubmateriasComQuantidadeQuestoesByMateriaId(id).subscribe({
+        next: submaterias => {
+          this.lista = submaterias;
+          this.totalItems = submaterias.length;
+          this.totalPages = 1;
+          this.carregando = false;
+        },
+        error: erro => this.handleError(erro)
+      });
+    } else {
+      this.submateriaService.findSubmateriasComQuantidadeQuestoes().subscribe({
+        next: submaterias => {
+          this.lista = submaterias;
+          this.totalItems = submaterias.length;
+          this.totalPages = 1;
+          this.carregando = false;
+        },
+        error: erro => this.handleError(erro)
+      });
+    }
+  }
+  
   private handlePaginatedResponse(response: any) {
     this.lista = response.content;
     this.totalItems = response.totalElements;
@@ -170,12 +206,19 @@ export class SubmateriaslistComponent {
   }
   
   onSearch() {
+    // Quando pesquisar, desativar o carregamento otimizado para permitir filtro por nome
+    if (this.filtroNome) {
+      this.usarCarregamentoOtimizado = false;
+    } else {
+      this.usarCarregamentoOtimizado = true;
+    }
     this.searchTerms.next(this.filtroNome);
   }
   
   limparFiltros() {
     this.filtroNome = '';
     this.currentPage = 0;
+    this.usarCarregamentoOtimizado = true;
     this.loadSubmateriasPaginated();
   }
   

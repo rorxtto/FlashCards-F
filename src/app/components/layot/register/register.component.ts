@@ -13,7 +13,7 @@ import { environment } from '../../../../environments/environment';
     styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-    user = { username: '', password: '' };
+    user = { username: '', password: '', fullName: '' };
 
     constructor(private http: HttpClient, private router: Router) {}
 

@@ -1,5 +1,5 @@
 .flashcards{
-  background-color: #DFEAE9;
+  background-color: #F0F1F6;
   width: 100%;
   min-height: 85vh;
   display: flex;
@@ -70,7 +70,7 @@
   border: none;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color:#DFEAE9; 
+  scrollbar-color:#F0F1F6; 
   transition: all 0.3s ease; 
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
 }
@@ -122,10 +122,27 @@
   margin-bottom: 10px;
   opacity: 0.7; /* Deixa o texto um pouco mais discreto */
   transition: opacity 0.3s ease-in-out;
+  padding-top: 0.5rem;
 }
 
 .wrap-flashcards:hover .flip-instruction {
   opacity: 1; /* Aumenta a visibilidade quando o usuário passa o mouse */
+}
+
+.questoes-contador {
+  background-color: #334E70;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  width: 20vw;
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  margin-right: 4rem;
 }
 
 

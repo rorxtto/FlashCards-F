@@ -13,12 +13,13 @@ import { Submateria } from '../../../models/submateria';
 import { Materia } from '../../../models/materia';
 import { Respostas } from '../../../models/respostas';
 import { Alternativas } from '../../../models/alternativas';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-flashcards',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './flashcards.component.html',
   styleUrl: './flashcards.component.scss',
   animations: [
@@ -48,6 +49,7 @@ export class FlashcardsComponent implements OnInit, AfterViewInit{
   router = inject(ActivatedRoute);
   materiaInstance = new Materia();
   submateriaInstance = new Submateria(this.materiaInstance);
+  submateria = this.submateriaInstance;
   questoes = new Questoes(this.submateriaInstance);
   questoesService = inject(QuestoesService);
   idSubmateria: number = 0;
@@ -55,6 +57,7 @@ export class FlashcardsComponent implements OnInit, AfterViewInit{
   constructor() {
     this.idSubmateria = this.router.snapshot.params['id'];
     this.carregarQuestao(this.idSubmateria, 0);
+    this.submateria.quantidadeRespondida = this.questoesService.retornarContador(this.idSubmateria);
   }
 
   carregarQuestao(id: number, idQuestaoEmTela: number) {
@@ -62,9 +65,10 @@ export class FlashcardsComponent implements OnInit, AfterViewInit{
       .findNextQuestionBySubmateria(id, idQuestaoEmTela)
       .subscribe({
         next: (questao) => {
-
           this.questoes = questao;
           this.embaralharAlternativas(); // Embaralha as alternativas ao carregar a questão
+          this.isFlipped = false; // Reseta o estado do card para mostrar o enunciado
+          this.submateria.quantidadeRespondida = this.questoesService.retornarContador(this.idSubmateria);
         },
         error: (erro) => {
           alert('Ocorreu um erro!');
@@ -98,6 +102,8 @@ export class FlashcardsComponent implements OnInit, AfterViewInit{
     this.questoesService.findById(id).subscribe({
       next: (questao) => {
         this.questoes = questao;
+        this.isFlipped = false; // Reseta o estado do card para mostrar o enunciado
+        this.submateria.quantidadeRespondida = this.questoesService.retornarContador(this.idSubmateria);
       },
       error: (erro) => {
         alert('Ocorreu um erro!');
@@ -113,6 +119,8 @@ export class FlashcardsComponent implements OnInit, AfterViewInit{
     let aux = this.questoesService.getRespostas(this.idSubmateria);
     let agora = this.getBrasiliaTime();
 
+    // Atualiza o contador de questões respondidas
+    this.submateria.quantidadeRespondida = this.questoesService.retornarContador(this.idSubmateria);
 
     if (aux) {
       respostas = aux;
@@ -307,3 +315,5 @@ export class FlashcardsComponent implements OnInit, AfterViewInit{
 
   
 }
+
+

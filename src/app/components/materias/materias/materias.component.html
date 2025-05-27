@@ -1,63 +1,66 @@
 <div class="materias">
-    
-        <div class="container-materias">
-            <h2 style="font-family: 'Poppins'; font-style: normal; font-weight: 600; font-size: 2rem; line-height: 54px; color: #252641"> Escolha a materia desejada</h2>
-    
-        <div class="cards-group col-lg-12">
-            @for (materia of lista; track $index) {
-            <div (click)="buscarSubmateria(materia.id)" class="card" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">
-                <div class="card-icon">
-                  <img src={{materia.base64}} alt="Icone" style="width: 90px; height: 90px;">
-                </div>
-                <div>
-                  <h3 class="card-title">{{materia.nome}}</h3>
-                  <p class="card-text"> {{materia.descricao}}</p>
-                </div>
-              </div>
-            }
+    <div class="container-materias">
+      <div style="display: flex; justify-content: flex-start; align-items: flex-start; flex-direction: column; width: 70%;">
+        <div class="welcome-message">
+            <h1>Olá, {{user.fullName}}! O que vamos estudar e revisar hoje?</h1>
         </div>
+        <h2 style="font-family: 'Poppins'; font-style: normal; font-weight: 600; font-size: 2rem; line-height: 54px; color: #252641"> Escolha o tema desejado</h2>
+      </div>
+    <div class="cards-group col-lg-12">
+        @for (materia of lista; track $index) {
+        <div (click)="buscarSubmateria(materia.id)" class="card" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">
+            <div class="card-icon">
+              <img src={{materia.base64}} alt="Icone" style="width: 130px; height: 130px;">
+            </div>
+            <div>
+              <h3 class="card-title">{{materia.nome}}</h3>
+              <p class="card-text"> {{materia.descricao}}</p>
+            </div>
+          </div>
+        }
     </div>
-    
-    </div>
-    
-    <footer class="footer-materias">
-    
-    </footer>
+</div>
+
+</div>
+
+<footer class="footer-materias">
+
+</footer>
 
 
-    <ng-template #modalSubmaterias>
-    <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Escolha sua Submatéria</h5>
-      <button
-        type="button"
-        class="btn-close"
-        aria-label="Close"
-        (click)="modalRef.close()"
-      ></button>
-    </div>
-    <div class="modal-body">
-      @if (submaterias.length > 0) {
-      <ul  class="list-group list-group-flush" >
-        @for (submateria of submaterias; track $index) {
-          <li (click)="modalRef.close()" 
-          routerLink="/admin/flashcards/{{submateria.id}}" 
-          routerLinkActive="router-link-active" 
-          class="list-group-item">
-        
-        {{ submateria.nome }} - 
-        <span data-bs-toggle="tooltip" data-bs-placement="top" title="Questões respondidas por dia">
-          ✅ {{ submateria.quantidadeRespondida }}
-        </span> - 
-        <span data-bs-toggle="tooltip" data-bs-placement="top" title="Total de Questões">
-          📋 {{ submateria.quantidadeQuestoes }}
-        </span>
-      </li>
-      
-      }
-      </ul>} @else {
-      <p class="list-group-item" *ngIf="submaterias.length === 0">Nenhuma submatéria disponível.</p>}
-    </div>
-  </ng-template>
+<ng-template #modalSubmaterias>
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">Escolha o subtema desejado</h5>
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="modalRef.close()"
+  ></button>
+</div>
+<div class="modal-body">
+  @if (submaterias.length > 0) {
+  <ul  class="list-group list-group-flush" >
+    @for (submateria of submaterias; track $index) {
+      <li style="cursor: pointer;" (click)="modalRef.close()" 
+      routerLink="/admin/flashcards/{{submateria.id}}" 
+      routerLinkActive="router-link-active" 
+      class="list-group-item">
+    
+    {{ submateria.nome }} - 
+    <span data-bs-toggle="tooltip" data-bs-placement="top" title="Questões respondidas por dia">
+      ✅ {{ submateria.quantidadeRespondida }}
+    </span> - 
+    <span data-bs-toggle="tooltip" data-bs-placement="top" title="Total de Questões">
+      📋 {{ submateria.quantidadeQuestoes }}
+    </span>
+  </li>
+  
+  }
+  </ul>} @else {
+  <p class="list-group-item" *ngIf="submaterias.length === 0">Nenhuma submatéria disponível.</p>}
+</div>
+</ng-template>
 
   
 

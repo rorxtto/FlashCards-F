@@ -1,7 +1,7 @@
 .materias{
     width: 100%; 
     min-height: 90vh; 
-    background-color: #DFEAE9;
+    background-color: #F0F1F6;
   
   }
 
@@ -38,7 +38,7 @@
     cursor: pointer; // Adiciona um cursor de mão para indicar que o cartão é clicável
     overflow-y: auto;
     scrollbar-width: none; /* Deixa a barra de rolagem mais fina (funciona no Firefox) */
-    scrollbar-color:#DFEAE9; /* Define as cores da barra de rolagem (funciona no Firefox) */
+    scrollbar-color:#F0F1F6; /* Define as cores da barra de rolagem (funciona no Firefox) */
     transition: all 0.3s ease; /* Transição suave para mudanças */
 
 
@@ -59,7 +59,7 @@
     line-height: 45px;
     text-align: center;
     letter-spacing: 0.02rem;
-    color: #00958C;
+    color: #334E70;
     margin-bottom: 0.75rem;
   }
   
@@ -85,6 +85,19 @@
         margin-top: 20px;
       }
   
+.welcome-message {
+    text-align: center;
+    
+    h1 {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.5rem;
+        color: #252641;
+        margin: 0;
+        display: flex;
+    }
+}
 
  
 

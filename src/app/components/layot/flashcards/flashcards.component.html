@@ -1,6 +1,11 @@
 <div class="flashcards">
+  <div style="width: 100%; height: 100%; display: flex; justify-content: flex-end; align-items: flex-end;">
+    <div class="questoes-contador">
+      <span>Questões respondidas hoje: {{ submateria.quantidadeRespondida }} </span>
+    </div>
+  </div>
 
-  <h3>{{questoes.submateria.nome}}</h3>
+  <h3 style="text-align: center;">{{questoes.submateria.nome}}</h3>
 
   <div class="wrap-flashcards" (click)="flipCard()">
 
@@ -10,7 +15,7 @@
           
 
           <h1 class="card-front-question">
-           {{questoes.id}} {{questoes.enunciado}}
+          {{questoes.enunciado}}
 
           </h1>
 
@@ -36,7 +41,7 @@
           </h1>
         }
         <p class="card-front-text">
-          Justificativa: {{questoes.justificativa}}
+          {{questoes.justificativa}}
         </p>
         
 
@@ -51,7 +56,7 @@
 
 
 
-    <div class="container-buttons">
+    <div class="container-buttons" *ngIf="isFlipped">
       <button (click)="avaliarERenderizarNovaQuestao(2)" style="background-color: #005156;" class="button-flashcards">
         Fácil<br>(Reaparece após 1 min)
       </button>
@@ -68,3 +73,4 @@
 
     
   </div>
+

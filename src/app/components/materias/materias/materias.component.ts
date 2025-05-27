@@ -9,6 +9,8 @@ import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 import { Router, RouterLink } from '@angular/router';
 import { QuestoesService } from '../../../services/questoes.service';
 import { SubmateriaService } from '../../../services/submateria.service';
+import { LoginService } from '../../../auth/login.service';
+import { Usuario } from '../../../auth/usuario';
 
 
 @Component({
@@ -28,6 +30,8 @@ export class MateriasComponent {
   submaterias: Submateria[] = [];  // Lista de submatérias associadas à matéria selecionada
   materiaSelecionada!: Materia;  // Propriedade para armazenar a matéria selecionada
   router = inject(Router);
+  loginService = inject(LoginService);
+  user: Usuario = new Usuario();
 
   constructor(
     private materiaService: MateriaService,
@@ -36,6 +40,7 @@ export class MateriasComponent {
 
   ) {
     this.findAll();
+    this.user = this.loginService.jwtDecode() as Usuario;
   }
     
   findAll(){

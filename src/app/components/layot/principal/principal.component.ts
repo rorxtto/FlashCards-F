@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuComponent } from '../menu/menu.component';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, Router } from '@angular/router';
 
 @Component({
   selector: 'app-principal',
@@ -10,5 +10,9 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './principal.component.scss'
 })
 export class PrincipalComponent {
+  constructor(private router: Router) {}
 
+  isMateriasPage(): boolean {
+    return this.router.url.includes('/materiasRenderizadas');
+  }
 }

@@ -147,14 +147,14 @@ export class FlashcardsComponent implements OnInit, AfterViewInit{
 
 
     let muitoFacilMinutos = 2;  // 1 minuto
-    let facilMinutos = 1;       // 1 minuto
-    let mediaMinutos = 0.5;     // 30 segundos
-    let dificilMinutos = 0.33;  // 20 segundos
-    let muitoDificilMinutos = 0.16; // 10 segundos
+    let facilMinutos = 10;       // 1 minuto
+    let mediaMinutos = 5;     // 30 segundos
+    let dificilMinutos = 1;  // 20 segundos
+    let muitoDificilMinutos = 10; // 10 segundos
 
     if ( 
       this.subtrairDatas(agora, respostas.dataHoraUltimaMuitoFacil, 'ms') >
-        muitoFacilMinutos * 1000 * 60 &&
+        muitoFacilMinutos * 24 * 60 * 60 * 1000 &&
       respostas.questoesMuitoFaceis.length > 0
     ) {
       let id = respostas.questoesMuitoFaceis[0];
@@ -162,7 +162,7 @@ export class FlashcardsComponent implements OnInit, AfterViewInit{
       respostas.questoesMuitoFaceis.splice(0, 1);
     } else if (
       this.subtrairDatas(agora, respostas.dataHoraUltimaFacil, 'ms') >
-        facilMinutos * 1000 * 60 &&
+        facilMinutos * 24 * 60 * 60 * 1000 &&
       respostas.questoesFaceis.length > 0
     ) {
       let id = respostas.questoesFaceis[0];
@@ -170,7 +170,7 @@ export class FlashcardsComponent implements OnInit, AfterViewInit{
       respostas.questoesFaceis.splice(0, 1);
     } else if (
       this.subtrairDatas(agora, respostas.dataHoraUltimaMedia, 'ms') >
-        mediaMinutos * 1000 * 60 &&
+        mediaMinutos * 24 * 60 * 60 * 1000 &&
       respostas.questoesMedias.length > 0
     ) {
       let id = respostas.questoesMedias[0];
@@ -178,7 +178,7 @@ export class FlashcardsComponent implements OnInit, AfterViewInit{
       respostas.questoesMedias.splice(0, 1);
     } else if (
       this.subtrairDatas(agora, respostas.dataHoraUltimaDificil, 'ms') >
-        dificilMinutos * 1000 * 60 &&
+        dificilMinutos * 24 * 60 * 60 * 1000 &&
       respostas.questoesDificeis.length > 0
     ) {
       let id = respostas.questoesDificeis[0];
@@ -186,7 +186,7 @@ export class FlashcardsComponent implements OnInit, AfterViewInit{
       respostas.questoesDificeis.splice(0, 1);
     } else if (
       this.subtrairDatas(agora, respostas.dataHoraUltimaMuitoDificil, 'ms') >
-        muitoDificilMinutos * 1000 * 60 &&
+        muitoDificilMinutos * 60 * 1000 &&
       respostas.questoesMuitoDificeis.length > 0
     ) {
       let id = respostas.questoesMuitoDificeis[0];

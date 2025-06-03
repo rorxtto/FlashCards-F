@@ -1,11 +1,40 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" style="margin-top: 0.5rem; margin-left: 3rem;">
+      <img
+        src="icons/medcards.png"
+        alt="Logo FlashCards"
+        style="height: 100px;"
+      />
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div style=" margin-top: 0.5rem; margin-right: 3rem;" class="collapse navbar-collapse" id="navbarNav">
+      <div class="welcome-message">
+        <h1>Olá, {{user.fullName}}! O que vamos estudar e revisar hoje?</h1>
+    </div>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" href="admin/materiasRenderizadas">Flashcards</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" href="admin/configuracoes">Configurações</a>
+        </li>
+        @if (loginService.hasPermission("ADMIN")) {
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" href="admin/materias">Admin</a>
+        </li>
+      }
+      </ul>
+    </div>
+  </div>
+</nav>
+
 <div class="materias">
     <div class="container-materias">
-      <div style="display: flex; justify-content: flex-start; align-items: flex-start; flex-direction: column; width: 70%;">
-        <div class="welcome-message">
-            <h1>Olá, {{user.fullName}}! O que vamos estudar e revisar hoje?</h1>
-        </div>
         <h2 style="font-family: 'Poppins'; font-style: normal; font-weight: 600; font-size: 2rem; line-height: 54px; color: #252641"> Escolha o tema desejado</h2>
-      </div>
+     
     <div class="cards-group col-lg-12">
         @for (materia of lista; track $index) {
         <div (click)="buscarSubmateria(materia.id)" class="card" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">

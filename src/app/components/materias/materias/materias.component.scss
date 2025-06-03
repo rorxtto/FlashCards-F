@@ -95,8 +95,27 @@
         font-size: 1.5rem;
         color: #252641;
         margin: 0;
+        padding-left: 2rem;
         display: flex;
     }
+}
+
+.navbar.bg-body-tertiary {
+  background-color: #F0F1F6 !important;
+  box-shadow: none !important;
+}
+
+.nav-link {
+
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 33px;
+  letter-spacing: 0.02em;
+  color: #334E70;
+  margin: 0px;
+
 }
 
  

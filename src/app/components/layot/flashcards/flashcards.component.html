@@ -1,7 +1,7 @@
 <div class="flashcards">
-  <div style="width: 100%; height: 100%; display: flex; justify-content: flex-end; align-items: flex-end;">
+  <div class="aaaa">
     <div class="questoes-contador">
-      <span>Questões respondidas hoje: {{ submateria.quantidadeRespondida }} </span>
+      <span style="text-align: center;">Flashcards respondidos hoje: {{ submateria.quantidadeRespondida }} </span>
     </div>
   </div>
 
@@ -58,16 +58,16 @@
 
     <div class="container-buttons" *ngIf="isFlipped">
       <button (click)="avaliarERenderizarNovaQuestao(2)" style="background-color: #005156;" class="button-flashcards">
-        Fácil<br>(Reaparece após 1 min)
+        Fácil<br>10 dias
       </button>
       <button (click)="avaliarERenderizarNovaQuestao(3)" style="background-color: #858700;" class="button-flashcards">
-        Médio<br>(Reaparece após 30 seg)
+        Normal<br>5 dias
       </button>
       <button (click)="avaliarERenderizarNovaQuestao(4)" style="background-color: #7F3D00;" class="button-flashcards">
-        Difícil<br>(Reaparece após 20 seg)
+        Difícil<br>1 dia
       </button>
       <button (click)="avaliarERenderizarNovaQuestao(5)" style="background-color: #730000;" class="button-flashcards">
-        Muito difícil<br>(Reaparece após 10 seg)
+        Errei <br>10 minutos
       </button>
     </div>
 

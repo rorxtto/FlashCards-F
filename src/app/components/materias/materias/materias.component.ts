@@ -12,13 +12,12 @@ import { SubmateriaService } from '../../../services/submateria.service';
 import { LoginService } from '../../../auth/login.service';
 import { Usuario } from '../../../auth/usuario';
 
-
 @Component({
   selector: 'app-materias',
   standalone: true,
-  imports: [CommonModule, SubmateriaslistComponent, MdbModalModule, RouterLink],  // Importando módulos necessários
+  imports: [CommonModule, SubmateriaslistComponent, MdbModalModule, RouterLink],
   templateUrl: './materias.component.html',
-  styleUrls: ['./materias.component.scss'] // Corrigido para styleUrls
+  styleUrl: './materias.component.scss'
 })
 export class MateriasComponent {
 
@@ -37,7 +36,6 @@ export class MateriasComponent {
     private materiaService: MateriaService,
     private questoesService: QuestoesService,
     private submateriaService: SubmateriaService
-
   ) {
     this.findAll();
     this.user = this.loginService.jwtDecode() as Usuario;

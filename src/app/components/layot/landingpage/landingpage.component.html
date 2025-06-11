@@ -1,180 +1,288 @@
-<section class="topSection">
-    <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-              <a class="navbar-brand" style="margin-top: 0.5rem; margin-left: 3rem;">
-                <img
-                  src="icons/medcards.png"
-                  alt="Logo FlashCards"
-                  style="height: 100px;"
-                />
-              </a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div style=" margin-top: 0.5rem; margin-right: 3rem;" class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                 
-                  <li class="nav-item">
-                    <a href="/login" class="button-login">Login</a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="https://hotmart.com/pt-br/marketplace/produtos/medcards-revalida/C96897389A" class="button-cadastrar">Cadastrar</a>
-                  </li>
-                </ul>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MedCards - REVALIDA</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="min-vh-100 bg-white">
+    <header class="fixed-top bg-white bg-opacity-90 border-bottom border-light">
+      <div class="container py-3">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex align-items-center">
+            <i class="fas fa-graduation-cap text-primary me-2"></i>
+            <span class="h4 fw-bold text-primary mb-0">MedCards - REVALIDA</span>
+          </div>
+          <button (click)="scrollToPlans()" class="btn btn-primary">
+            Ver Planos
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <section class="pt-5 pb-4">
+      <div style="margin-top: 8rem;"  class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 text-center mb-4 mb-lg-0">
+            <div class="mb-4">
+              <span style="border-radius: 30px; background-color: rgba(243, 244, 246, 0.8);" class=" text-primary p-2 fs-5">🎯 Especialistas no Revalida INEP!</span>
+            </div>
+            
+            <h1 class="display-8 fw-bold mb-4">
+              A maneira mais eficiente, prática e 
+              <span class="text-primary">rápida</span> 
+              de estudar e revisar para a 
+              <span class="text-primary">1ª fase do Revalida INEP!</span>
+            </h1>
+            
+            <p class="lead text-muted mb-4">
+              Conteúdo atualizado semanalmente e direcionado para o SEU ritmo de estudo!
+            </p>
+            
+            <button (click)="scrollToPlans()" class="btn btn-success btn-lg px-5 py-3">
+              Assine e acelere a sua aprovação!
+            </button>
+          </div>
+          
+          <div class="col-lg-6">
+            <div class="card bg-primary bg-gradient p-4 shadow">
+              <div class="card-body bg-white rounded-3">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <i class="fas fa-mobile-alt text-primary"></i>
+                  <span class="badge bg-light text-primary">Flashcard 935/1.247</span>
+                </div>
+                <div class="text-center">
+                  <h3 class="h5 fw-semibold mb-3">Qual hérnia é mais comum na infância?</h3>
+                  <div class="progress mb-2">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 75%"></div>
+                  </div>
+                  <p class="small text-muted">Progresso: 75% concluído</p>
+                </div>
               </div>
             </div>
-          </nav>
-    </header>
-
-    <div class="container-top">
-        <div class="wrap-container-top">
-            <h1 class="title-container-top">Sua aprovação agora é muito mais fácil</h1>
-            <p class="text-container-top">Preparação Dinâmica, Avaliação Interativa: Sua Jornada para o Revalida!</p>
-            <a href="/login" class="button-acessar"> Acessar </a>
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<section class="topSection1">
-    <header>
-        <h1 style="font-family: 'Poppins', sans-serif; font-style: normal; font-weight: 900; font-size: 2.75rem; line-height: 130%; text-align: center;">Sobre Nós</h1>
-        <p style="font-family: 'Poppins', sans-serif; font-style: normal; font-weight: 275; font-size: 1.1rem; line-height: 160%; text-align: center; color: rgba(1, 5, 20, 0.8); margin: 0px;">
-            Somos uma plataforma dedicada ao sucesso dos estudantes no Revalida,
-            o exame necessário para validar diplomas de medicina no Brasil.
-            Nosso foco está em fornecer uma abordagem eficaz de estudo através
-            de flashcards cuidadosamente elaborados. Acreditamos que a prática
-            regular com perguntas e respostas concisas é fundamental para a
-            preparação dos candidatos, permitindo uma revisão eficiente e
-            aprofundada dos conceitos essenciais. Nosso compromisso é oferecer
-            uma ferramenta robusta e intuitiva que ajude os estudantes a
-            alcançarem seus objetivos de aprovação no Revalida.
-        </p>
-    </header>
-    <div class="container-top1">
-        <p class="text-container-top1">
-            <span class="highlight-container-top1">25K+</span>
-            <br>Estudantes
+    <section class="py-5 bg-light">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="display-4 fw-bold mb-4">Sobre a plataforma</h2>
+          <p class="lead text-muted mx-auto" style="max-width: 800px;">
+            Tenha acesso a + 44 mil de flashcards organizados por temas que REALMENTE caem no Revalida INEP. Nossa plataforma inteligente ajuda você a otimizar seu tempo e focar no que realmente importa para sua aprovação.
           </p>
-          <p class="text-container-top1">
-            <span class="highlight-container-top1">10K+</span>
-            <br>Questões
-          </p>
-          <p class="text-container-top1">
-            <span class="highlight-container-top1">95%</span>
-            <br>Redução no tempo<br> de estudo
-          </p>
+        </div>
+        
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card h-100 shadow-sm hover-shadow">
+              <div class="card-body text-center">
+                <i class="fas fa-book-open text-primary display-4 mb-3"></i>
+                <h3 class="h4 fw-semibold mb-3">Conteúdo Direcionado</h3>
+                <p class="text-muted">100% focado nos temas que caem na prova do Revalida INEP.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4">
+            <div class="card h-100 shadow-sm hover-shadow">
+              <div class="card-body text-center">
+                <i class="fas fa-chart-bar text-primary display-4 mb-3"></i>
+                <h3 class="h4 fw-semibold mb-3">Acompanhamento</h3>
+                <p class="text-muted">Monitore seu progresso e identifique pontos que precisam de mais atenção.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4">
+            <div class="card h-100 shadow-sm hover-shadow">
+              <div class="card-body text-center">
+                <i class="fas fa-clock text-primary display-4 mb-3"></i>
+                <h3 class="h4 fw-semibold mb-3">Revisões Personalizadas</h3>
+                <p class="text-muted">Revisões automáticas e direcionadas para o que você tem mais dificuldade.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-          <p class="text-container-top1">
-            <span class="highlight-container-top1">75</span>
-            <br>Matérias<br> Disponiveis
-          </p>
-          <p class="text-container-top1">
-            <span class="highlight-container-top1">99%</span>
-            <br>Taxa de recomendação<br> dos usuários
-          </p>
-    </div>
-    <footer class="footer-container-top1">
-        <h2 style="font-family: 'Poppins', sans-serif; font-style: normal; font-weight: 700; font-size: 1.7rem; line-height: 180%; color: #2F327D;"> Tudo em um <span style="color: #696984;">unico lugar</span></h2>
-        <p style="font-family: 'Poppins', sans-serif; font-style: normal; font-weight: 400; font-size: 1.3rem; line-height: 180%; text-align: center; color: #696984;">
-          Centralize sua preparação e otimize seu tempo com nossa <br>
-          plataforma integrada para o Revalida.
-        </p>
+    <section class="py-5">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="display-4 fw-bold text-primary mb-4">Por que escolher o MedCards - Revalida?</h2>
+        </div>
+        
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <div class="d-flex flex-column gap-4">
+              <div class="d-flex align-items-start">
+                <i class="fas fa-check text-primary mt-1 me-3"></i>
+                <span class="fs-5 text-muted">Estude até 3x mais rápido com nossa metodologia de flashcards.</span>
+              </div>
+              <div class="d-flex align-items-start">
+                <i class="fas fa-check text-primary mt-1 me-3"></i>
+                <span class="fs-5 text-muted">Foco total no que realmente cai na prova, sem perder tempo.</span>
+              </div>
+              <div class="d-flex align-items-start">
+                <i class="fas fa-check text-primary mt-1 me-3"></i>
+                <span class="fs-5 text-muted">Atualizações semanais com os temas mais cobrados no Revalida INEP.</span>
+              </div>
+              <div class="d-flex align-items-start">
+                <i class="fas fa-check text-primary mt-1 me-3"></i>
+                <span class="fs-5 text-muted">Evite o excesso de materiais: estude de forma organizada e eficiente.</span>
+              </div>
+              <div class="d-flex align-items-start">
+                <i class="fas fa-check text-primary mt-1 me-3"></i>
+                <span class="fs-5 text-muted">Flashcards revisados por especialistas no Revalida INEP.</span>
+              </div>
+              <div class="d-flex align-items-start">
+                <i class="fas fa-check text-primary mt-1 me-3"></i>
+                <span class="fs-5 text-muted">Estude onde quiser: acesso 100% online, pelo computador, tablet ou celular.</span>
+              </div>
+              <div class="d-flex align-items-start">
+                <i class="fas fa-check text-primary mt-1 me-3"></i>
+                <span class="fs-5 text-muted">Ganhe confiança com revisões sistemáticas e baseadas em evidências de confiança.</span>
+              </div>
+              <div class="d-flex align-items-start">
+                <i class="fas fa-check text-primary mt-1 me-3"></i>
+                <span class="fs-5 text-muted">Prepare-se com segurança: conteúdo sempre atualizado conforme o edital.</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-lg-6">
+            <div class="card bg-light border-0 p-4">
+              <div class="card-body">
+                <div class="d-flex align-items-center mb-4">
+                  <i class="fas fa-star text-primary me-3"></i>
+                  <h3 class="h3 fw-bold mb-0">Base científica dos Flashcards:</h3>
+                </div>
+                <div class="text-muted">
+                  <p class="mb-3"><strong>Ministério da Saúde (Brasil)</strong><br />Diretrizes e protocolos oficiais que norteiam a saúde pública nacional.</p>
+                  <p class="mb-3"><strong>UpToDate</strong><br />Plataforma global de referência clínica, atualizada constantemente por especialistas.</p>
+                  <p class="mb-3"><strong>PubMed / Medline</strong><br />Base de dados científica internacional com milhões de artigos revisados por pares.</p>
+                  <p class="mb-3"><strong>Cochrane Library</strong><br />Revisões sistemáticas rigorosas que garantem práticas baseadas em evidências.</p>
+                  <p class="mb-3"><strong>Organização Mundial da Saúde (OMS)</strong><br />Protocolos e recomendações internacionais para saúde pública.</p>
+                  <p class="mb-3"><strong>Sociedades Médicas Brasileiras</strong><br />Diretrizes específicas de diversas especialidades, aprovadas por consenso de especialistas.</p>
+                  <p class="mb-3"><strong>National Institute for Health and Care Excellence (NICE)</strong><br />Referência mundial em diretrizes clínicas baseadas em evidências.</p>
+                  <p class="mb-3"><strong>Principais Revistas Científicas Internacionais</strong><br />Como The Lancet, JAMA e New England Journal of Medicine — publicações de alto impacto científico.</p>
+                  <p class="mb-3"><strong>Manual MSD (Merck Manual)</strong><br />Conteúdo didático e confiável para profissionais da saúde.</p>
+                  <p class="mb-3"><strong>Instituições de Pesquisa e Saúde Pública do Brasil</strong><br />Como Fiocruz e INCA, que promovem avanços em saúde e protocolos nacionais.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section #plans id="plans" class="py-5 bg-light">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="display-4 fw-bold mb-4">Escolha seu plano</h2>
+          <p class="lead text-muted">Valores exclusivos de LANÇAMENTO da plataforma por tempo LIMITADO!</p>
+        </div>
+        
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card h-100 border-2">
+              <div class="card-body text-center">
+                <h3 class="h3 fw-semibold mb-4">Plano Básico</h3>
+                <div class="h2 fw-bold text-primary mb-4">
+                  R$ 59,90<small class="fs-6 fw-normal text-dark">/mês</small>
+                </div>
+                <ul class="list-unstyled text-start mb-4">
+                  <li class="mb-2">✅ Acesso total e imediato a todos os Flashcards.</li>
+                  <li class="mb-2">✅ Conteúdo sempre atualizado com foco no que mais cai.</li>
+                  <li class="mb-2">✅ Suporte ágil para tirar dúvidas a qualquer momento.</li>
+                  <li class="mb-2">✅ Garantia de 7 dias para testar sem riscos.</li>
+                </ul>
+                <button class="btn btn-outline-primary w-100" (click)="redirectToHotmart('C96897389A?off=bdx7lqt5')">
+                  Começar agora!
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card h-100 bg-success text-white border-primary position-relative">
+              <div class="position-absolute top-0 start-50 translate-middle">
+                <span class="badge bg-danger p-2">+ VENDIDO!</span>
+              </div>
+              <div class="card-body text-center">
+                <h3 class="h3 fw-semibold mb-4">Plano Anual</h3>
+                <div class="h2 fw-bold mb-4">12x de R$ 49,52</div>
+                <div class="h5 opacity-75 mb-4">ou R$ 478,80/ano à vista</div>
+                <ul class="list-unstyled text-start mb-4">
+                  <li class="mb-2">✅ O plano mais vantajoso para quem quer resultado.</li>
+                  <li class="mb-2">✅ Acesso ilimitado a todo o conteúdo por 1 ano.</li>
+                  <li class="mb-2">✅ Sempre atualizado com o que mais cai no Revalida.</li>
+                  <li class="mb-2">✅ Suporte humanizado, 24h por dia.</li>
+                  <li class="mb-2">✅ Garantia total: satisfação ou seu dinheiro de volta em 7 dias.</li>
+                </ul>
+                <button class="btn btn-primary w-100" (click)="redirectToHotmart('C96897389A?off=ywhvemy9')">
+                  🔥 Plano anual com desconto!
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card h-100 border-2">
+              <div class="card-body text-center">
+                <h3 class="h3 fw-semibold mb-4">Plano Vitalício</h3>
+                <div class="h2 fw-bold text-primary mb-4">
+                  12x de R$ 206,54
+                </div>
+                <div class="h5 text-primary mb-4">
+                  ou R$ 1.997,00 à vista
+                </div>
+                <ul class="list-unstyled text-start mb-4">
+                  <li class="mb-2">✅ Acesso ilimitado e vitalício: nunca mais se preocupe com renovações.</li>
+                  <li class="mb-2">✅ Todas as atualizações futuras inclusas, para sempre.</li>
+                  <li class="mb-2">✅ Suporte prioritário, sempre que precisar.</li>
+                  <li class="mb-2">✅ Garantia de 7 dias: adquira com total segurança.</li>
+                </ul>
+                <button class="btn btn-outline-primary w-100" (click)="redirectToHotmart('C96897389A?off=x08jl7me')">
+                  Garantir acesso vitalício!
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-primary text-white py-5">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <div class="d-flex align-items-center mb-3">
+              <i class="fas fa-graduation-cap me-2"></i>
+              <span class="h4 fw-bold mb-0">MedCards - REVALIDA</span>
+            </div>
+            <p class="text-white-75">A plataforma mais completa para sua preparação na primeira fase do Revalida INEP.</p>
+          </div>
+          
+          <div class="col-lg-4">
+            <h3 class="h5 fw-semibold mb-3">Contato</h3>
+            <p class="text-white-75">&#64;medcardsrevalida</p>
+          </div>
+        </div>
+        
+        <hr class="my-4 border-white-25">
+        <div class="text-center text-white-75">
+          <p class="mb-0">© 2025 MedCards - REVALIDA. Todos os direitos reservados.</p>
+        </div>
+      </div>
     </footer>
-</section>
+  </div>
 
-<section class="topSection2">
-    <h1 style="font-family: 'Poppins', sans-serif; font-style: normal; font-weight: 800; font-size: 2.75rem; line-height: 96px; display: flex; align-items: center; text-align: center; letter-spacing: -1px; color: #334E70; margin: 5rem;">
-      Nossos Planos
-    </h1>
-
-    <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap;">
-      <div class="card">
-        <div style="padding-top: 20px;">
-          <div class="plans-title">
-            <p style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 700; font-size: 18px; line-height: 32px; display: flex; align-items: center; letter-spacing: 0.2px; color: #334E70;">
-              Plano Mensal
-            </p>
-          </div>
-
-          <div class="price">
-            R$ 59,90
-            <span style=" font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 12px; line-height: 15px; display: flex; align-items: center; letter-spacing: 2.5px; text-transform: uppercase; color: #2D3436;"> / mês </span>
-          </div>
-        </div>
-
-        <div class="description">
-          <div class="icon">
-            <img src="data:image/svg+xml,%3csvg%20width='32'%20height='32'%20viewBox='0%200%2032%2032'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20filter='url(%23filter0_b_399_52)'%3e%3crect%20opacity='0.48'%20width='32'%20height='32'%20rx='16'%20fill='%23C2C2C2'/%3e%3c/g%3e%3cpath%20d='M20.4815%2012.6401L14.3215%2018.8001L11.5215%2016.0001'%20stroke='%232D3436'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cdefs%3e%3cfilter%20id='filter0_b_399_52'%20x='-48'%20y='-48'%20width='128'%20height='128'%20filterUnits='userSpaceOnUse'%20color-interpolation-filters='sRGB'%3e%3cfeFlood%20flood-opacity='0'%20result='BackgroundImageFix'/%3e%3cfeGaussianBlur%20in='BackgroundImageFix'%20stdDeviation='24'/%3e%3cfeComposite%20in2='SourceAlpha'%20operator='in'%20result='effect1_backgroundBlur_399_52'/%3e%3cfeBlend%20mode='normal'%20in='SourceGraphic'%20in2='effect1_backgroundBlur_399_52'%20result='shape'/%3e%3c/filter%3e%3c/defs%3e%3c/svg%3e" alt="#" /> Acesso ilimitado
-          </div>
-          <div class="icon">
-            <img src="data:image/svg+xml,%3csvg%20width='32'%20height='32'%20viewBox='0%200%2032%2032'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20filter='url(%23filter0_b_399_52)'%3e%3crect%20opacity='0.48'%20width='32'%20height='32'%20rx='16'%20fill='%23C2C2C2'/%3e%3c/g%3e%3cpath%20d='M20.4815%2012.6401L14.3215%2018.8001L11.5215%2016.0001'%20stroke='%232D3436'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cdefs%3e%3cfilter%20id='filter0_b_399_52'%20x='-48'%20y='-48'%20width='128'%20height='128'%20filterUnits='userSpaceOnUse'%20color-interpolation-filters='sRGB'%3e%3cfeFlood%20flood-opacity='0'%20result='BackgroundImageFix'/%3e%3cfeGaussianBlur%20in='BackgroundImageFix'%20stdDeviation='24'/%3e%3cfeComposite%20in2='SourceAlpha'%20operator='in'%20result='effect1_backgroundBlur_399_52'/%3e%3cfeBlend%20mode='normal'%20in='SourceGraphic'%20in2='effect1_backgroundBlur_399_52'%20result='shape'/%3e%3c/filter%3e%3c/defs%3e%3c/svg%3e" alt="#" /> Pagamento mensal
-          </div>
-          <div class="icon">
-            <img src="data:image/svg+xml,%3csvg%20width='32'%20height='32'%20viewBox='0%200%2032%2032'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20filter='url(%23filter0_b_399_52)'%3e%3crect%20opacity='0.48'%20width='32'%20height='32'%20rx='16'%20fill='%23C2C2C2'/%3e%3c/g%3e%3cpath%20d='M20.4815%2012.6401L14.3215%2018.8001L11.5215%2016.0001'%20stroke='%232D3436'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cdefs%3e%3cfilter%20id='filter0_b_399_52'%20x='-48'%20y='-48'%20width='128'%20height='128'%20filterUnits='userSpaceOnUse'%20color-interpolation-filters='sRGB'%3e%3cfeFlood%20flood-opacity='0'%20result='BackgroundImageFix'/%3e%3cfeGaussianBlur%20in='BackgroundImageFix'%20stdDeviation='24'/%3e%3cfeComposite%20in2='SourceAlpha'%20operator='in'%20result='effect1_backgroundBlur_399_52'/%3e%3cfeBlend%20mode='normal'%20in='SourceGraphic'%20in2='effect1_backgroundBlur_399_52'%20result='shape'/%3e%3c/filter%3e%3c/defs%3e%3c/svg%3e" alt="#" /> Atualizações regulares
-          </div>
-        </div>
-        <a class="btn" href="https://pay.hotmart.com/C96897389A?off=bdx7lqt5"> Assinar </a>
-      </div>
-      <div class="card">
-        <div>
-          <div class="plans-title">
-            <p style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 700; font-size: 18px; line-height: 32px; display: flex; align-items: center; letter-spacing: 0.2px; color: #334E70;">
-                Plano anual
-            </p>
-            <button class="button-best">Best!</button>
-          </div>
-
-          <div class="price">
-            R$ 49,52
-            <span style=" font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 12px; line-height: 15px; display: flex; align-items: center; letter-spacing: 2.5px; text-transform: uppercase; color: #2D3436;"> / mês </span>
-          </div>
-        </div>
-
-        <div class="description">
-          <div class="icon">
-            <img src="data:image/svg+xml,%3csvg%20width='32'%20height='32'%20viewBox='0%200%2032%2032'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20filter='url(%23filter0_b_384_85)'%3e%3crect%20width='32'%20height='32'%20rx='16'%20fill='%23FDCB6E'/%3e%3c/g%3e%3cpath%20d='M20.4815%2012.6401L14.3215%2018.8001L11.5215%2016.0001'%20stroke='%232D3436'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cdefs%3e%3cfilter%20id='filter0_b_384_85'%20x='-48'%20y='-48'%20width='128'%20height='128'%20filterUnits='userSpaceOnUse'%20color-interpolation-filters='sRGB'%3e%3cfeFlood%20flood-opacity='0'%20result='BackgroundImageFix'/%3e%3cfeGaussianBlur%20in='BackgroundImageFix'%20stdDeviation='24'/%3e%3cfeComposite%20in2='SourceAlpha'%20operator='in'%20result='effect1_backgroundBlur_384_85'/%3e%3cfeBlend%20mode='normal'%20in='SourceGraphic'%20in2='effect1_backgroundBlur_384_85'%20result='shape'/%3e%3c/filter%3e%3c/defs%3e%3c/svg%3e" alt="Icone" /> Melhor custo benefício
-          </div>
-          <div class="icon">
-            <img src="data:image/svg+xml,%3csvg%20width='32'%20height='32'%20viewBox='0%200%2032%2032'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20filter='url(%23filter0_b_384_85)'%3e%3crect%20width='32'%20height='32'%20rx='16'%20fill='%23FDCB6E'/%3e%3c/g%3e%3cpath%20d='M20.4815%2012.6401L14.3215%2018.8001L11.5215%2016.0001'%20stroke='%232D3436'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cdefs%3e%3cfilter%20id='filter0_b_384_85'%20x='-48'%20y='-48'%20width='128'%20height='128'%20filterUnits='userSpaceOnUse'%20color-interpolation-filters='sRGB'%3e%3cfeFlood%20flood-opacity='0'%20result='BackgroundImageFix'/%3e%3cfeGaussianBlur%20in='BackgroundImageFix'%20stdDeviation='24'/%3e%3cfeComposite%20in2='SourceAlpha'%20operator='in'%20result='effect1_backgroundBlur_384_85'/%3e%3cfeBlend%20mode='normal'%20in='SourceGraphic'%20in2='effect1_backgroundBlur_384_85'%20result='shape'/%3e%3c/filter%3e%3c/defs%3e%3c/svg%3e" alt="Icone" /> Renovação anual
-          </div>
-          <div class="icon">
-            <img src="data:image/svg+xml,%3csvg%20width='32'%20height='32'%20viewBox='0%200%2032%2032'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20filter='url(%23filter0_b_384_85)'%3e%3crect%20width='32'%20height='32'%20rx='16'%20fill='%23FDCB6E'/%3e%3c/g%3e%3cpath%20d='M20.4815%2012.6401L14.3215%2018.8001L11.5215%2016.0001'%20stroke='%232D3436'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cdefs%3e%3cfilter%20id='filter0_b_384_85'%20x='-48'%20y='-48'%20width='128'%20height='128'%20filterUnits='userSpaceOnUse'%20color-interpolation-filters='sRGB'%3e%3cfeFlood%20flood-opacity='0'%20result='BackgroundImageFix'/%3e%3cfeGaussianBlur%20in='BackgroundImageFix'%20stdDeviation='24'/%3e%3cfeComposite%20in2='SourceAlpha'%20operator='in'%20result='effect1_backgroundBlur_384_85'/%3e%3cfeBlend%20mode='normal'%20in='SourceGraphic'%20in2='effect1_backgroundBlur_384_85'%20result='shape'/%3e%3c/filter%3e%3c/defs%3e%3c/svg%3e" alt="Icone" /> Acesso ilimitado
-          </div>
-          <div class="icon">
-            <img src="data:image/svg+xml,%3csvg%20width='32'%20height='32'%20viewBox='0%200%2032%2032'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20filter='url(%23filter0_b_384_85)'%3e%3crect%20width='32'%20height='32'%20rx='16'%20fill='%23FDCB6E'/%3e%3c/g%3e%3cpath%20d='M20.4815%2012.6401L14.3215%2018.8001L11.5215%2016.0001'%20stroke='%232D3436'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cdefs%3e%3cfilter%20id='filter0_b_384_85'%20x='-48'%20y='-48'%20width='128'%20height='128'%20filterUnits='userSpaceOnUse'%20color-interpolation-filters='sRGB'%3e%3cfeFlood%20flood-opacity='0'%20result='BackgroundImageFix'/%3e%3cfeGaussianBlur%20in='BackgroundImageFix'%20stdDeviation='24'/%3e%3cfeComposite%20in2='SourceAlpha'%20operator='in'%20result='effect1_backgroundBlur_384_85'/%3e%3cfeBlend%20mode='normal'%20in='SourceGraphic'%20in2='effect1_backgroundBlur_384_85'%20result='shape'/%3e%3c/filter%3e%3c/defs%3e%3c/svg%3e" alt="Icone" /> Prioridade no suporte
-          </div>
-        </div>
-        <a class="btn" href="https://pay.hotmart.com/C96897389A?off=ywhvemy9&bid=1744150822194"> Assinar </a>
-      </div>
-      <!-- <div class="card">
-        <div>
-          <div class="plans-title">
-            <p style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 700; font-size: 18px; line-height: 32px; display: flex; align-items: center; letter-spacing: 0.2px; color: #334E70;">
-                Plano semestral
-            </p>
-          </div>
-
-          <div class="price">
-            R$ NULL
-            <span style=" font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 11px; line-height: 15px; display: flex; align-items: center; letter-spacing: 2.5px; text-transform: uppercase; color: #2D3436;"> / mês </span>
-          </div>
-        </div>
-
-        <div class="description">
-          <div class="icon">
-            <img src="data:image/svg+xml,%3csvg%20width='32'%20height='32'%20viewBox='0%200%2032%2032'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20filter='url(%23filter0_b_399_123)'%3e%3crect%20opacity='0.48'%20width='32'%20height='32'%20rx='16'%20fill='%2355EFC4'/%3e%3c/g%3e%3cpath%20d='M20.4815%2012.6401L14.3215%2018.8001L11.5215%2016.0001'%20stroke='%232D3436'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cdefs%3e%3cfilter%20id='filter0_b_399_123'%20x='-48'%20y='-48'%20width='128'%20height='128'%20filterUnits='userSpaceOnUse'%20color-interpolation-filters='sRGB'%3e%3cfeFlood%20flood-opacity='0'%20result='BackgroundImageFix'/%3e%3cfeGaussianBlur%20in='BackgroundImageFix'%20stdDeviation='24'/%3e%3cfeComposite%20in2='SourceAlpha'%20operator='in'%20result='effect1_backgroundBlur_399_123'/%3e%3cfeBlend%20mode='normal'%20in='SourceGraphic'%20in2='effect1_backgroundBlur_399_123'%20result='shape'/%3e%3c/filter%3e%3c/defs%3e%3c/svg%3e" alt="Icone" /> Renovação semestral
-          </div>
-          <div class="icon">
-            <img src="data:image/svg+xml,%3csvg%20width='32'%20height='32'%20viewBox='0%200%2032%2032'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20filter='url(%23filter0_b_399_123)'%3e%3crect%20opacity='0.48'%20width='32'%20height='32'%20rx='16'%20fill='%2355EFC4'/%3e%3c/g%3e%3cpath%20d='M20.4815%2012.6401L14.3215%2018.8001L11.5215%2016.0001'%20stroke='%232D3436'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cdefs%3e%3cfilter%20id='filter0_b_399_123'%20x='-48'%20y='-48'%20width='128'%20height='128'%20filterUnits='userSpaceOnUse'%20color-interpolation-filters='sRGB'%3e%3cfeFlood%20flood-opacity='0'%20result='BackgroundImageFix'/%3e%3cfeGaussianBlur%20in='BackgroundImageFix'%20stdDeviation='24'/%3e%3cfeComposite%20in2='SourceAlpha'%20operator='in'%20result='effect1_backgroundBlur_399_123'/%3e%3cfeBlend%20mode='normal'%20in='SourceGraphic'%20in2='effect1_backgroundBlur_399_123'%20result='shape'/%3e%3c/filter%3e%3c/defs%3e%3c/svg%3e" alt="Icone" /> Acesso ilimitado
-          </div>
-          <div class="icon">
-            <img src="data:image/svg+xml,%3csvg%20width='32'%20height='32'%20viewBox='0%200%2032%2032'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20filter='url(%23filter0_b_399_123)'%3e%3crect%20opacity='0.48'%20width='32'%20height='32'%20rx='16'%20fill='%2355EFC4'/%3e%3c/g%3e%3cpath%20d='M20.4815%2012.6401L14.3215%2018.8001L11.5215%2016.0001'%20stroke='%232D3436'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cdefs%3e%3cfilter%20id='filter0_b_399_123'%20x='-48'%20y='-48'%20width='128'%20height='128'%20filterUnits='userSpaceOnUse'%20color-interpolation-filters='sRGB'%3e%3cfeFlood%20flood-opacity='0'%20result='BackgroundImageFix'/%3e%3cfeGaussianBlur%20in='BackgroundImageFix'%20stdDeviation='24'/%3e%3cfeComposite%20in2='SourceAlpha'%20operator='in'%20result='effect1_backgroundBlur_399_123'/%3e%3cfeBlend%20mode='normal'%20in='SourceGraphic'%20in2='effect1_backgroundBlur_399_123'%20result='shape'/%3e%3c/filter%3e%3c/defs%3e%3c/svg%3e" alt="Icone" /> Desconto intermediário
-          </div>
-        </div>
-        <a class="btn" href="https://pay.hotmart.com/C96897389A?off=sa7pmy58&bid=1739237509088"> Assinar </a>
-      </div> -->
-    </div>
-  </section>
-
-  <section class="footer-LandingPage"></section>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-landingpage',
@@ -8,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrl: './landingpage.component.scss'
 })
 export class LandingpageComponent {
+  @ViewChild('plans') plansSection!: ElementRef;
 
+  scrollToPlans() {
+    this.plansSection.nativeElement.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  redirectToHotmart(offCode: string) {
+    window.location.href = `https://pay.hotmart.com/${offCode}`;
+  }
 }

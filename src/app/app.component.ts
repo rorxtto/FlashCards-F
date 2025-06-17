@@ -11,31 +11,34 @@ import { RouterOutlet } from '@angular/router';
 export class AppComponent implements OnInit {
   
   ngOnInit() {
-    setInterval(() => {
-      const aux = localStorage.getItem('respostas');
-  
-      if (aux) {
-        let respostas = JSON.parse(aux) as any[];
-  
-        const agora = new Date();
-  
-        respostas = respostas.map(item => {
-          const dataItem = new Date(item.dataHoraUltimaMedia);
-          const diffMs = agora.getTime() - dataItem.getTime();
-  
-          if (diffMs >= 24 * 60 * 60 * 1000) {  // 24 horas = 86.400.000 ms
-            console.log(`${item.submateriaId}`);
-            item.contador = 0;
-          }
-  
-          return item;
-        });
-  
-        localStorage.setItem('respostas', JSON.stringify(respostas));
-      }
-    }, 43200000); // Executa a cada 1 minuto
+    this.verificarAtualizacaoContadores();
+    // Verifica a cada 5 minutos para garantir que não perca nenhuma atualização
+    setInterval(() => this.verificarAtualizacaoContadores(), 5 * 60 * 1000);
   }
-  
-  
 
+  private verificarAtualizacaoContadores() {
+    const aux = localStorage.getItem('respostas');
+    if (!aux) return;
+
+    let respostas = JSON.parse(aux) as any[];
+    const agora = new Date().getTime();
+    let houveAlteracao = false;
+
+    respostas = respostas.map(item => {
+      const ultimaAtualizacao = new Date(item.ultimaAtualizacao || 0).getTime();
+      const passou24h = (agora - ultimaAtualizacao) >= 24 * 60 * 60 * 1000;
+
+      if (passou24h) {
+        item.contador = 0;
+        item.ultimaAtualizacao = new Date().toISOString();
+        houveAlteracao = true;
+      }
+
+      return item;
+    });
+
+    if (houveAlteracao) {
+      localStorage.setItem('respostas', JSON.stringify(respostas));
+    }
+  }
 }

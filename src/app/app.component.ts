@@ -25,7 +25,12 @@ export class AppComponent implements OnInit {
     let houveAlteracao = false;
 
     respostas = respostas.map(item => {
-      const ultimaAtualizacao = new Date(item.ultimaAtualizacao || 0).getTime();
+      // Garante que o campo exista
+      if (!item.ultimaAtualizacao) {
+        item.ultimaAtualizacao = new Date().toISOString();
+        houveAlteracao = true;
+      }
+      const ultimaAtualizacao = new Date(item.ultimaAtualizacao).getTime();
       const passou24h = (agora - ultimaAtualizacao) >= 24 * 60 * 60 * 1000;
 
       if (passou24h) {

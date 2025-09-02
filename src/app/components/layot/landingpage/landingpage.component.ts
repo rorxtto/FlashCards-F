@@ -15,6 +15,6 @@ export class LandingpageComponent {
   }
 
   redirectToHotmart(offCode: string) {
-    window.location.href = `https://pay.hotmart.com/${offCode}`;
+    window.location.href = `https://buy.stripe.com/${offCode}`;
   }
 }
